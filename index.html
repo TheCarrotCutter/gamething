@@ -13,6 +13,7 @@
             type: Phaser.AUTO,
             width: 800,
             height: 600,
+            pixelArt: true,
             physics: {
                 default: 'arcade',
                 arcade: {
@@ -33,6 +34,8 @@
         let player;
         let platforms;
         let cursors;
+
+        const GRID_SIZE = 16;
 
         function preload() {
             // No external assets are being loaded here
