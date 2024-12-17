@@ -67,7 +67,7 @@
             let playerVelocityX = player.body.velocity.x;
             let playerVelocityY = player.body.velocity.y;
 
-            let velocityChange = 1 * delta;
+            let velocityChange = 0.5 * delta;
             
             if (playerVelocityX > 0) {
                 player.setVelocityX(playerVelocityX - velocityChange * 20)
@@ -88,7 +88,7 @@
                 }
             }
             if (cursors.up.isDown && player.body.onFloor()) {
-                player.setVelocityY(velocityChange * -450);
+                player.setVelocityY(-450);
             }
             if (cursors.down.isDown) {
                 player.setVelocityY(playerVelocityY + velocityChange * 100);
