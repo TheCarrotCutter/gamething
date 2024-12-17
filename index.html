@@ -11,7 +11,7 @@
         // Phaser game configuration
         const config = {
             type: Phaser.AUTO,
-            width: 1200,
+            width: 1300,
             height: 700,
             pixelArt: true,
             physics: {
@@ -43,7 +43,7 @@
 
         function create() {
             // Create a simple sky background using a rectangle
-            this.add.rectangle(400, 300, 800, 600, 0x87CEEB);  // Sky Blue
+            this.add.rectangle(400, 300, 1300, 700, 0x87CEEB);  // Sky Blue
 
             // Create static platforms using simple rectangles
             platforms = this.physics.add.staticGroup();
