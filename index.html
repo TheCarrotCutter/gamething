@@ -72,11 +72,11 @@
             if (playerVelocityX < 0) {
                 player.setVelocityX(playerVelocityX + 20)
             }
-            if (cursors.left.isDown) {
-                player.setVelocityX(-160);
+            if (cursors.left.isDown && playerVelocityX >= -250) {
+                player.setVelocityX(playerVelocityX - 20);
             }
-            else if (cursors.right.isDown) {
-                player.setVelocityX(160);
+            else if (cursors.right.isDown && playerVelocityX <= 250) {
+                player.setVelocityX(playerVelocityX + 20);
             }
             if (cursors.up.isDown && player.body.onFloor()) {
                 player.setVelocityY(-330);
