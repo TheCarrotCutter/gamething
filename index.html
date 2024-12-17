@@ -35,71 +35,42 @@
         let cursors;
 
         function preload() {
-            // Load images
-            this.load.image('sky', 'assets/sky.png');
-            this.load.image('ground', 'assets/ground.png');
-            this.load.spritesheet('dude', 'assets/dude.png', {
-                frameWidth: 32,
-                frameHeight: 48
-            });
+            // No external assets are being loaded here
         }
 
         function create() {
-            // Add background
-            this.add.image(400, 300, 'sky');
+            // Create a simple sky background using a rectangle
+            this.add.rectangle(400, 300, 800, 600, 0x87CEEB);  // Sky Blue
 
-            // Create static platforms
+            // Create static platforms using simple rectangles
             platforms = this.physics.add.staticGroup();
+            platforms.create(400, 568, 'platform').setScale(2).refreshBody();
+            platforms.create(600, 400, 'platform');
+            platforms.create(50, 250, 'platform');
+            platforms.create(750, 220, 'platform');
 
-            platforms.create(400, 568, 'ground').setScale(2).refreshBody();
-            platforms.create(600, 400, 'ground');
-            platforms.create(50, 250, 'ground');
-            platforms.create(750, 220, 'ground');
-
-            // Create player
-            player = this.physics.add.sprite(100, 450, 'dude');
-
+            // Create player as a simple rectangle
+            player = this.physics.add.sprite(100, 450, 'platform');
+            player.setSize(32, 48);  // Set the size of the player (width x height)
             player.setBounce(0.2);
             player.setCollideWorldBounds(true);
+
+            // Collider for the player and the platforms
             this.physics.add.collider(player, platforms);
 
-            // Animations
-            this.anims.create({
-                key: 'left',
-                frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 3 }),
-                frameRate: 10,
-                repeat: -1
-            });
-
-            this.anims.create({
-                key: 'turn',
-                frames: [{ key: 'dude', frame: 4 }],
-                frameRate: 20
-            });
-
-            this.anims.create({
-                key: 'right',
-                frames: this.anims.generateFrameNumbers('dude', { start: 5, end: 8 }),
-                frameRate: 10,
-                repeat: -1
-            });
-
-            // Setup controls
+            // Set up basic controls
             cursors = this.input.keyboard.createCursorKeys();
         }
 
         function update() {
             if (cursors.left.isDown) {
                 player.setVelocityX(-160);
-                player.anims.play('left', true);
             }
             else if (cursors.right.isDown) {
                 player.setVelocityX(160);
-                player.anims.play('right', true);
             }
             else {
                 player.setVelocityX(0);
-                player.anims.play('turn');
             }
 
             if (cursors.up.isDown && player.body.touching.down) {
@@ -109,4 +80,3 @@
     </script>
 </body>
 </html>
-
