@@ -66,30 +66,32 @@
 
             let playerVelocityX = player.body.velocity.x;
             let playerVelocityY = player.body.velocity.y;
+
+            let velocityChange = 1 * delta;
             
             if (playerVelocityX > 0) {
-                player.setVelocityX(playerVelocityX - 20)
+                player.setVelocityX(playerVelocityX - velocityChange * 20)
             }
             if (playerVelocityX < 0) {
-                player.setVelocityX(playerVelocityX + 20)
+                player.setVelocityX(playerVelocityX + velocityChange * 20)
             }
             if (cursors.left.isDown && playerVelocityX >= -550) {
-                player.setVelocityX(playerVelocityX - 50);
+                player.setVelocityX(playerVelocityX - velocityChange * 50);
                 if (playerVelocityX > 0) {
                     player.setVelocityX(0)
                 }
             }
             if (cursors.right.isDown && playerVelocityX <= 550) {
-                player.setVelocityX(playerVelocityX + 50);
+                player.setVelocityX(playerVelocityX + velocityChange * 50);
                 if (playerVelocityX < 0) {
                     player.setVelocityX(0)
                 }
             }
             if (cursors.up.isDown && player.body.onFloor()) {
-                player.setVelocityY(-450);
+                player.setVelocityY(velocityChange * -450);
             }
             if (cursors.down.isDown) {
-                player.setVelocityY(playerVelocityY + 100);
+                player.setVelocityY(playerVelocityY + velocityChange * 100);
             }
         }
     </script>
