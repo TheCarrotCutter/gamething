@@ -67,10 +67,10 @@
             let playerVelocityX = player.body.velocity.x;
             
             if (playerVelocityX > 0) {
-                player.setVelocityX(playerVelocityX - 1)
+                player.setVelocityX(playerVelocityX - 20)
             }
             if (playerVelocityX < 0) {
-                player.setVelocityX(playerVelocityX + 1)
+                player.setVelocityX(playerVelocityX + 20)
             }
             if (cursors.left.isDown) {
                 player.setVelocityX(-160);
