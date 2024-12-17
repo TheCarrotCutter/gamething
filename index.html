@@ -65,6 +65,7 @@
         function update() {
 
             let playerVelocityX = player.body.velocity.x;
+            let playerVelocityY = player.body.velocity.y;
             
             if (playerVelocityX > 0) {
                 player.setVelocityX(playerVelocityX - 20)
@@ -85,10 +86,10 @@
                 }
             }
             if (cursors.up.isDown && player.body.onFloor()) {
-                player.setVelocityY(-330);
+                player.setVelocityY(-450);
             }
             if (cursors.down.isDown) {
-                player.setVelocityY(100);
+                player.setVelocityY(playerVelocityY + 100);
             }
         }
     </script>
