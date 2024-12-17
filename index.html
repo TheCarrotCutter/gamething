@@ -75,7 +75,7 @@
             if (playerVelocityX < 0) {
                 player.setVelocityX(playerVelocityX + velocityChange * 20)
             }
-            if (playerVelocityX < velocityChange * 20 || playerVelocityX > velocityChange * -20) {
+            if (playerVelocityX < velocityChange * 20 && playerVelocityX > velocityChange * -20) {
                 player.setVelocityX(0)
             }
             if (cursors.left.isDown && playerVelocityX >= -550) {
