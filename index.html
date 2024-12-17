@@ -62,7 +62,7 @@
             cursors = this.input.keyboard.createCursorKeys();
         }
 
-        function update() {
+        function update(time, delta) {
 
             let playerVelocityX = player.body.velocity.x;
             let playerVelocityY = player.body.velocity.y;
