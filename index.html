@@ -86,7 +86,7 @@
             let height = this.cameras.main.height;
             let resolution = Math.min(width, height); // Use the smallest dimension to maintain aspect ratio
 
-            this.cameras.main.postPipeline.setUniform('u_resolution', resolution);
+            shader.setFloat2('u_resolution', this.cameras.main.width, this.cameras.main.height)
         }
 
         function update(time, delta) {
