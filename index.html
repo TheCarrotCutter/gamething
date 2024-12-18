@@ -48,8 +48,7 @@
         let player;
         let platforms;
         let cursors;
-
-        const GRID_SIZE = 8;
+        let pixelShader;
 
         function preload() {
             // No external assets are being loaded here
@@ -77,6 +76,11 @@
 
             // Set up basic controls
             cursors = this.input.keyboard.createCursorKeys();
+
+            // Create the pixelation shader
+            pixelShader = this.add.shader(pixelationShader, 0, 0, 1300, 600);
+            pixelShader.setResolution(1300, 600); // Set the resolution for the shader (pixel grid size)
+
         }
 
         function update(time, delta) {
