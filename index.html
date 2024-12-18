@@ -79,7 +79,6 @@
 
             // Create the pixelation shader and apply it to the camera
             pixelShader = this.add.shader(pixelationShader, 0, 0, 1300, 600);
-            pixelShader.setResolution(1300, 600); // Set the resolution for the shader (pixel grid size)
 
             // Apply shader to the camera (all objects rendered by the camera will be affected)
             this.cameras.main.setPostPipeline(pixelShader);
