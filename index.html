@@ -81,6 +81,8 @@
             pixelShader = this.add.shader(pixelationShader, 0, 0, 1300, 600);
             pixelShader.setResolution(1300, 600); // Set the resolution for the shader (pixel grid size)
 
+            this.cameras.main.setPostPipeline(pixelShader);
+
         }
 
         function update(time, delta) {
