@@ -8,6 +8,24 @@
 </head>
 <body>
     <script>
+           const pixelationShader = `
+        precision mediump float;
+        uniform float u_resolution;
+        uniform sampler2D uMainSampler;
+        varying vec2 outTexCoord;
+        
+        void main() {
+            // Pixel size
+            float pixelSize = 1.0 / u_resolution;
+        
+            // Calculate the position of the pixel grid
+            vec2 pos = floor(outTexCoord / pixelSize) * pixelSize;
+        
+            // Sample the texture at that pixel position
+            gl_FragColor = texture2D(uMainSampler, pos);
+            }
+        `;
+        
         // Phaser game configuration
         const config = {
             type: Phaser.AUTO,
