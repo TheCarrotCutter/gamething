@@ -8,15 +8,13 @@
 </head>
 <body>
     <script>
-        // Pixelation Shader
         const pixelationShader = `
             precision mediump float;
-            uniform float u_resolution;
+            uniform vec2 u_resolution;
             uniform sampler2D uMainSampler;
             varying vec2 outTexCoord;
-
+            
             void main() {
-                // Calculate the pixel size based on resolution
                 float pixelSize = 1.0 / u_resolution;
                 vec2 pos = floor(outTexCoord / pixelSize) * pixelSize;
                 gl_FragColor = texture2D(uMainSampler, pos);
@@ -26,8 +24,8 @@
         // Phaser game configuration
         const config = {
             type: Phaser.AUTO,
-            width: 650,  // Lower resolution width (adjust this for more pixelation)
-            height: 300, // Lower resolution height (adjust this for more pixelation)
+            width: 1300,
+            height: 600,
             pixelArt: true,
             physics: {
                 default: 'arcade',
@@ -52,23 +50,23 @@
         let pixelShader;
 
         function preload() {
-            // No external assets are being loaded for now
+            // No external assets are being loaded here
         }
 
         function create() {
             // Create a simple sky background using a rectangle
-            this.add.rectangle(200, 150, 400, 300, 0x87CEEB);  // Sky Blue
+            this.add.rectangle(400, 300, 1300, 700, 0x87CEEB);  // Sky Blue
 
-            // Create static platforms using simple rectangles (player and platform display size added)
+            // Create static platforms using simple rectangles
             platforms = this.physics.add.staticGroup();
-            platforms.create(200, 250, null).setDisplaySize(200, 32); // Platform 1
-            platforms.create(300, 200, null).setDisplaySize(200, 32); // Platform 2
-            platforms.create(50, 150, null).setDisplaySize(200, 32);  // Platform 3
-            platforms.create(350, 120, null).setDisplaySize(200, 32); // Platform 4
+            platforms.create(400, 568, 'platform').setScale(2).refreshBody();
+            platforms.create(600, 400, 'platform');
+            platforms.create(50, 250, 'platform');
+            platforms.create(750, 220, 'platform');
 
             // Create player as a simple rectangle
-            player = this.physics.add.sprite(100, 200, null);
-            player.setDisplaySize(32, 32);  // Set the size of the player (width x height)
+            player = this.physics.add.sprite(100, 450, 'platform');
+            player.setSize(32, 32);  // Set the size of the player (width x height)
             player.setBounce(0);
             player.setCollideWorldBounds(true);
 
@@ -78,42 +76,38 @@
             // Set up basic controls
             cursors = this.input.keyboard.createCursorKeys();
 
-            // Create the pixelation shader and apply it to the camera
-            this.cameras.main.setPostPipeline(pixelationShader);
-
-            // Update the shader's resolution uniform to match the new camera size
-            let width = this.cameras.main.width;
-            let height = this.cameras.main.height;
-            let resolution = Math.min(width, height); // Use the smallest dimension to maintain aspect ratio
-
-            pixelShader.set('u_resolution', new Phaser.Math.Vector2(this.cameras.main.width, this.cameras.main.height));
+            // Create the pixelation shader
+            pixelShader = this.add.shader(pixelationShader, 0, 0, 1300, 600);
         }
 
         function update(time, delta) {
+            // Set the resolution uniform dynamically
+            pixelShader.setUniform('u_resolution', new Phaser.Math.Vector2(this.cameras.main.width, this.cameras.main.height));
+
             let playerVelocityX = player.body.velocity.x;
             let playerVelocityY = player.body.velocity.y;
 
             let velocityChange = 0.5 * delta;
             
             if (playerVelocityX > 0) {
-                player.setVelocityX(playerVelocityX - velocityChange * 20);
+                player.setVelocityX(playerVelocityX - velocityChange * 20)
             }
             if (playerVelocityX < 0) {
-                player.setVelocityX(playerVelocityX + velocityChange * 20);
+                player.setVelocityX(playerVelocityX + velocityChange * 20)
             }
             if (playerVelocityX < velocityChange * 20 && playerVelocityX > velocityChange * -20) {
-                player.setVelocityX(0);
+                player.setVelocityX(0)
             }
             if (cursors.left.isDown && playerVelocityX >= -550) {
                 player.setVelocityX(playerVelocityX - velocityChange * 50);
                 if (playerVelocityX > 0) {
-                    player.setVelocityX(0);
+                    player.setVelocityX(0)
                 }
             }
             if (cursors.right.isDown && playerVelocityX <= 550) {
                 player.setVelocityX(playerVelocityX + velocityChange * 50);
                 if (playerVelocityX < 0) {
-                    player.setVelocityX(0);
+                    player.setVelocityX(0)
                 }
             }
             if (cursors.up.isDown && player.body.onFloor()) {
