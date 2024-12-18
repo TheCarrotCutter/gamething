@@ -8,6 +8,7 @@
 </head>
 <body>
     <script>
+        // Pixelation Shader
         const pixelationShader = `
             precision mediump float;
             uniform float u_resolution;
@@ -21,7 +22,6 @@
             }
         `;
 
-        
         // Phaser game configuration
         const config = {
             type: Phaser.AUTO,
@@ -51,7 +51,7 @@
         let pixelShader;
 
         function preload() {
-            // No external assets are being loaded here
+            // No external assets are being loaded, we'll use basic shapes
         }
 
         function create() {
@@ -60,14 +60,14 @@
 
             // Create static platforms using simple rectangles
             platforms = this.physics.add.staticGroup();
-            platforms.create(400, 568, 'platform').setScale(2).refreshBody();
-            platforms.create(600, 400, 'platform');
-            platforms.create(50, 250, 'platform');
-            platforms.create(750, 220, 'platform');
+            platforms.create(400, 568, null).setDisplaySize(200, 32); // Platform 1
+            platforms.create(600, 400, null).setDisplaySize(200, 32); // Platform 2
+            platforms.create(50, 250, null).setDisplaySize(200, 32);  // Platform 3
+            platforms.create(750, 220, null).setDisplaySize(200, 32); // Platform 4
 
             // Create player as a simple rectangle
-            player = this.physics.add.sprite(100, 450, 'platform');
-            player.setSize(32, 32);  // Set the size of the player (width x height)
+            player = this.physics.add.sprite(100, 450, null);
+            player.setDisplaySize(32, 32);  // Set the size of the player (width x height)
             player.setBounce(0);
             player.setCollideWorldBounds(true);
 
@@ -77,16 +77,15 @@
             // Set up basic controls
             cursors = this.input.keyboard.createCursorKeys();
 
-            // Create the pixelation shader
+            // Create the pixelation shader and apply it to the camera
             pixelShader = this.add.shader(pixelationShader, 0, 0, 1300, 600);
             pixelShader.setResolution(1300, 600); // Set the resolution for the shader (pixel grid size)
 
+            // Apply shader to the camera (all objects rendered by the camera will be affected)
             this.cameras.main.setPostPipeline(pixelShader);
-
         }
 
         function update(time, delta) {
-
             let playerVelocityX = player.body.velocity.x;
             let playerVelocityY = player.body.velocity.y;
 
