@@ -16,7 +16,7 @@
             varying vec2 outTexCoord;
             
             void main() {
-                float pixelSize = 1.0 / u_resolution;
+                float pixelSize = 10.0 / u_resolution;
                 vec2 pos = floor(outTexCoord / pixelSize) * pixelSize;
                 gl_FragColor = texture2D(uMainSampler, pos);
             }
