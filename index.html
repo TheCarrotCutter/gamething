@@ -83,6 +83,8 @@
 
             // Apply shader to the camera (all objects rendered by the camera will be affected)
             this.cameras.main.setPostPipeline(pixelShader);
+
+            console.log("Scene created successfully!");
         }
 
         function update(time, delta) {
