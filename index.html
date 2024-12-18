@@ -86,7 +86,7 @@
             let height = this.cameras.main.height;
             let resolution = Math.min(width, height); // Use the smallest dimension to maintain aspect ratio
 
-            pixelShader.setFloat2('u_resolution', this.cameras.main.width, this.cameras.main.height)
+            pixelShader.set('u_resolution', new Phaser.Math.Vector2(this.cameras.main.width, this.cameras.main.height));
         }
 
         function update(time, delta) {
