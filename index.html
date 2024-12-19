@@ -62,14 +62,14 @@
             this.add.rectangle(400, 300, 1300, 700, 0x87CEEB);  // Sky Blue
 
             // Create static platforms using simple rectangles
-            platforms = this.matter.add.staticBodies();
-            platforms.create(400, 568, null).setDisplaySize(200, 32); // Platform 1
-            platforms.create(600, 400, null).setDisplaySize(200, 32); // Platform 2
-            platforms.create(50, 250, null).setDisplaySize(200, 32);  // Platform 3
-            platforms.create(750, 220, null).setDisplaySize(200, 32); // Platform 4
 
-            // Create player as a simple rectangle
-            player = this.physics.add.sprite(100, 450, null);
+            this.matter.add.rectangle(400, 568, 200, 32, { isStatic: true });
+            this.matter.add.rectangle(600, 400, 200, 32, { isStatic: true });
+            this.matter.add.rectangle(50, 250, 200, 32, { isStatic: true });
+            this.matter.add.rectangle(750, 220, 200, 32, { isStatic: true });
+
+        
+            player = this.matter.add.sprite(100, 450, null);
             player.setDisplaySize(32, 32);  // Set the size of the player (width x height)
             player.setBounce(0);
             player.setCollideWorldBounds(true);
