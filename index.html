@@ -45,7 +45,11 @@
 
         function create() {
 
-            console.log(this.matter);
+            if (this.matter) {
+                console.log('Matter.js is initialized!', this.matter);
+            } else {
+                console.error('Matter.js failed to initialize!');
+            }
 
             var postFxPlugin = this.plugins.get('rexpixelationpipelineplugin');
             // Apply the pixelation effect to the camera
