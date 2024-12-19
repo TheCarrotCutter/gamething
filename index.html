@@ -62,7 +62,7 @@
             this.add.rectangle(400, 300, 1300, 700, 0x87CEEB);  // Sky Blue
 
             // Create static platforms using simple rectangles
-            platforms = this.physics.add.staticGroup();
+            platforms = this.matter.add.staticBody();
             platforms.create(400, 568, null).setDisplaySize(200, 32); // Platform 1
             platforms.create(600, 400, null).setDisplaySize(200, 32); // Platform 2
             platforms.create(50, 250, null).setDisplaySize(200, 32);  // Platform 3
