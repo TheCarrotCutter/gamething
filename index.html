@@ -75,7 +75,10 @@
             p1render = this.add.graphics({ fillStyle: { color: 0xff0000 } });
             
             console.log(player1);
-            const player2 = this.matter.add.circle(200, 200, 20, 0xffffff);
+            const player2 = this.matter.add.circle(200, 200, 20);
+
+            player2 = this.add.circle(160, 15, 100, 50, 0xffffff);
+            this.matter.add.existing(player2);
      //       const player3 = this.matter.add.circle(200, 200, 20);
    //         const player4 = this.matter.add.circle(200, 200, 20);
  //           const player5 = this.matter.add.circle(200, 200, 20);
