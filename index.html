@@ -69,14 +69,21 @@
             this.matter.add.rectangle(0, 600, 2000, 32, { isStatic: true });
 
             const player1 = this.matter.add.circle(200, 200, 20)
-
-            player1.render.fillStyle = '#ff0000';
-
-            p1render = this.add.graphics({ fillStyle: { color: 0xff0000 } });
             
             console.log(player1);
             
-            player2 = this.matter.add.circle(160, 15, 50, 0xffffff);
+            player2physics = this.matter.add.circle(160, 15, 50);
+            player2visuals = this.add.circle(160, 15, 50, 0xffffff);
+
+            player2visuals.setPos = function(x, y) {
+                this.x = x;
+                this.y = y;
+            };
+
+            player2 = {
+                physics: player2physics,
+                visuals: player2visuals
+            };
      //       const player3 = this.matter.add.circle(200, 200, 20);
    //         const player4 = this.matter.add.circle(200, 200, 20);
  //           const player5 = this.matter.add.circle(200, 200, 20);
