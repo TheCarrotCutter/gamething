@@ -74,17 +74,8 @@
             
             player2physics = this.matter.add.circle(160, 15, 50);
             player2visuals = this.add.circle(160, 15, 50, 0xffffff);
-            console.log(player2visuals)
+            console.log(player2visuals.x)
 
-            player2visuals.setPos = function(x, y) {
-                this.x = x;
-                this.y = y;
-            };
-
-            player2 = {
-                physics: player2physics,
-                visuals: player2visuals
-            };
      //       const player3 = this.matter.add.circle(200, 200, 20);
    //         const player4 = this.matter.add.circle(200, 200, 20);
  //           const player5 = this.matter.add.circle(200, 200, 20);
@@ -124,12 +115,7 @@
         }
 
         function update(time, delta) {
-            player2visuals.setPos(player2.physics.x, player2.physics.y)
-            console.log(player2.visuals.x)
-            if (player2.visuals.x = "undefined") {
-                player2visuals.setPos(0, 0)
-            }
-                
+            console.log(player2visuals.x)
         }
     </script>
 </body>
