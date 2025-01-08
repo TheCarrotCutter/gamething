@@ -76,8 +76,8 @@
             player2visuals = this.add.circle(160, 15, 50, 0xffffff);
 
             player2visuals.setPos = function(x, y) {
-                this.x = x;
-                this.y = y;
+                this.position.x = x;
+                this.position.y = y;
             };
 
             player2 = {
@@ -123,9 +123,9 @@
         }
 
         function update(time, delta) {
-            player2visuals.setPos(player2.physics.x, player2.physics.y)
-            console.log(player2.visuals.x)
-            if (player2.visuals.x = "undefined") {
+            player2visuals.setPos(player2.physics.position.x, player2.physics.position.y)
+            console.log(player2.visuals.position.x)
+            if (player2.visuals.position.x = "undefined") {
                 player2visuals.setPos(0, 0)
             }
                 
