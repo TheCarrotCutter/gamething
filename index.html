@@ -51,10 +51,9 @@
                 console.error('Matter.js failed to initialize!');
             }
 
-            var postFxPlugin = this.plugins.get('rexpixelationpipelineplugin');
             // Apply the pixelation effect to the camera
 //comment this line to deactivate the shader
-            this.cameraFilter = postFxPlugin.add(this.cameras.main);
+
 //and these
             this.cameraFilter.pixelWidth = 5;  //5
             this.cameraFilter.pixelHeight = 5;
