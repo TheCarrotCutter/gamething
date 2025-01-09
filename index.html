@@ -50,13 +50,6 @@
             } else {
                 console.error('Matter.js failed to initialize!');
             }
-
-            // Apply the pixelation effect to the camera
-//comment this line to deactivate the shader
-
-//and these
-            this.cameraFilter.pixelWidth = 5;  //5
-            this.cameraFilter.pixelHeight = 5;
             
             // Create a simple sky background using a rectangle
             this.add.rectangle(400, 300, 1300, 700, 0x87CEEB);  // Sky Blue
@@ -107,6 +100,9 @@
 
             // Create the pixelation shader and apply it to the camera
             pixelShader = this.add.shader(postFxPlugin, 0, 0, 1300, 600);
+
+            this.cameraFilter.pixelWidth = 5;  //5
+            this.cameraFilter.pixelHeight = 5;
 
             // Apply shader to the camera (all objects rendered by the camera will be affected)
             this.cameras.main.setPostPipeline(pixelShader);
