@@ -50,6 +50,13 @@
             } else {
                 console.error('Matter.js failed to initialize!');
             }
+
+            //var postFxPlugin = this.plugins.get('rexpixelationpipelineplugin');
+            // Apply the pixelation effect to the camera
+            //this.cameraFilter = postFxPlugin.add(this.cameras.main);
+
+            //this.cameraFilter.pixelWidth = 5;
+            //this.cameraFilter.pixelHeight = 5;
             
             // Create a simple sky background using a rectangle
             this.add.rectangle(400, 300, 1300, 700, 0x87CEEB);  // Sky Blue
@@ -99,13 +106,10 @@
             cursors = this.input.keyboard.createCursorKeys();
 
             // Create the pixelation shader and apply it to the camera
-            pixelShader = this.add.shader(postFxPlugin, 0, 0, 1300, 600);
-
-            this.cameraFilter.pixelWidth = 5;  //5
-            this.cameraFilter.pixelHeight = 5;
+            //pixelShader = this.add.shader(pixelationShader, 0, 0, 1300, 600);
 
             // Apply shader to the camera (all objects rendered by the camera will be affected)
-            this.cameras.main.setPostPipeline(pixelShader);
+            //this.cameras.main.setPostPipeline(pixelShader);
 
             console.log("Scene created successfully!");
         }
@@ -113,9 +117,7 @@
         function update(time, delta) {
             console.log(player2visuals.x)
             console.log(player2visuals.y)
-            console.log(player2physics.position.x)
-            console.log(player2physics.position.y)
-            player2visuals.setPosition(player2physics.position.x, player2physics.position.y);
+            //player2visuals.setPosition(player2physics.x, player2physics.y);
         }
     </script>
 </body>
