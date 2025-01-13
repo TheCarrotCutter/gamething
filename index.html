@@ -47,6 +47,7 @@
 
             const spring_strength = 0.0025;
             const player_radius = 10;
+            const player_color = 0xffffff;
 
             if (this.matter) {
                 console.log('Matter.js is initialized!', this.matter);
@@ -77,15 +78,15 @@
             this.add.rectangle(0, 600, 2000, 32, 0x6600ff);
             
             player2physics = this.matter.add.circle(160, 15, player_radius);
-            player2visuals = this.add.circle(160, 15, player_radius, 0xffffff);
+            player2visuals = this.add.circle(160, 15, player_radius, player_color);
             console.log(player2visuals.x)
 
             player1physics = this.matter.add.circle(160, 15, player_radius);
-            player1visuals = this.add.circle(160, 15, player_radius, 0xffffff);
+            player1visuals = this.add.circle(160, 15, player_radius, player_color);
             console.log(player1visuals.x)
 
             player3physics = this.matter.add.circle(160, 15, player_radius);
-            player3visuals = this.add.circle(160, 15, player_radius, 0xffffff);
+            player3visuals = this.add.circle(160, 15, player_radius, player_color);
             console.log(player3visuals.x)
             
             this.matter.add.spring(player1physics, player2physics, 0, spring_strength);
