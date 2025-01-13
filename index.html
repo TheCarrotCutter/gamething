@@ -73,15 +73,21 @@
             this.add.rectangle(50, 250, 200, 32, 0x6600ff);
             this.add.rectangle(0, 600, 2000, 32, 0x6600ff);
             
-            player2physics = this.matter.add.circle(160, 15, 20);
+            player2physics = this.matter.add.circle(160, 15, 10);
             player2visuals = this.add.circle(160, 15, 20, 0xffffff);
             console.log(player2visuals.x)
 
-            player1physics = this.matter.add.circle(160, 15, 20);
+            player1physics = this.matter.add.circle(160, 15, 10);
             player1visuals = this.add.circle(160, 15, 20, 0xffffff);
             console.log(player1visuals.x)
+
+            player3physics = this.matter.add.circle(160, 15, 10);
+            player3visuals = this.add.circle(160, 15, 20, 0xffffff);
+            console.log(player3visuals.x)
             
             this.matter.add.spring(player1physics, player2physics, 0, 0.001);
+            this.matter.add.spring(player2physics, player3physics, 0, 0.001);
+            this.matter.add.spring(player3physics, player1physics, 0, 0.001);
 
 
 
@@ -100,6 +106,8 @@
             player2visuals.setPosition(player2physics.position.x, player2physics.position.y);
 
             player1visuals.setPosition(player1physics.position.x, player1physics.position.y);
+
+            player3visuals.setPosition(player3physics.position.x, player3physics.position.y);
         }
     </script>
 </body>
