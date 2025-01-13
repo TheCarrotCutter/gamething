@@ -45,7 +45,7 @@
 
         function create() {
 
-            const spring_strength = 0.0025;
+            const spring_strength = 0.0075;
             const player_radius = 10;
             const player_color = 0xffffff;
 
@@ -88,10 +88,25 @@
             player3physics = this.matter.add.circle(160, 15, player_radius);
             player3visuals = this.add.circle(160, 15, player_radius, player_color);
             console.log(player3visuals.x)
+ 
+            player4physics = this.matter.add.circle(160, 15, player_radius);
+            player4visuals = this.add.circle(160, 15, player_radius, player_color);
+            console.log(player4visuals.x)
+
+            player5physics = this.matter.add.circle(160, 15, player_radius);
+            player5visuals = this.add.circle(160, 15, player_radius, player_color);
+            console.log(player5visuals.x)
+
+            player6physics = this.matter.add.circle(160, 15, player_radius);
+            player6visuals = this.add.circle(160, 15, player_radius, player_color);
+            console.log(player6visuals.x)
             
             this.matter.add.spring(player1physics, player2physics, 0, spring_strength);
             this.matter.add.spring(player2physics, player3physics, 0, spring_strength);
-            this.matter.add.spring(player3physics, player1physics, 0, spring_strength);
+            this.matter.add.spring(player3physics, player4physics, 0, spring_strength);
+            this.matter.add.spring(player4physics, player5physics, 0, spring_strength);
+            this.matter.add.spring(player5physics, player6physics, 0, spring_strength);
+            this.matter.add.spring(player6physics, player1physics, 0, spring_strength);
 
 
 
