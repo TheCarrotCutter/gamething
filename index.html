@@ -100,6 +100,10 @@
             player6physics = this.matter.add.circle(160, 15, player_radius);
             player6visuals = this.add.circle(160, 15, player_radius, player_color);
             console.log(player6visuals.x)
+
+            player7physics = this.matter.add.circle(160, 15, player_radius);
+            player7visuals = this.add.circle(160, 15, player_radius, player_color);
+            console.log(player7visuals.x)
             
             this.matter.add.spring(player1physics, player2physics, 0, spring_strength);
             this.matter.add.spring(player2physics, player3physics, 0, spring_strength);
@@ -107,6 +111,13 @@
             this.matter.add.spring(player4physics, player5physics, 0, spring_strength);
             this.matter.add.spring(player5physics, player6physics, 0, spring_strength);
             this.matter.add.spring(player6physics, player1physics, 0, spring_strength);
+
+            this.matter.add.spring(player7physics, player1physics, 0, spring_strength);
+            this.matter.add.spring(player7physics, player2physics, 0, spring_strength);
+            this.matter.add.spring(player7physics, player3physics, 0, spring_strength);
+            this.matter.add.spring(player7physics, player4physics, 0, spring_strength);
+            this.matter.add.spring(player7physics, player5physics, 0, spring_strength);
+            this.matter.add.spring(player7physics, player6physics, 0, spring_strength);
 
 
 
