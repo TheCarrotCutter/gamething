@@ -49,7 +49,6 @@
             const player_radius = 10;
             const player_color = 0xC54BB7;
             const spring_length = 1;
-            const spring_length_connect = 1;
 
             if (this.matter) {
                 console.log('Matter.js is initialized!', this.matter);
@@ -82,80 +81,50 @@
             //base
             player1physics = this.matter.add.circle(160, 15, player_radius);
             player1visuals = this.add.circle(160, 15, player_radius, player_color);
+
             player2physics = this.matter.add.circle(160, 15, player_radius);
             player2visuals = this.add.circle(160, 15, player_radius, player_color);
+
             player3physics = this.matter.add.circle(160, 15, player_radius);
             player3visuals = this.add.circle(160, 15, player_radius, player_color);
+
             player4physics = this.matter.add.circle(160, 15, player_radius);
             player4visuals = this.add.circle(160, 15, player_radius, player_color);
+
             player5physics = this.matter.add.circle(160, 15, player_radius);
             player5visuals = this.add.circle(160, 15, player_radius, player_color);
+
             player6physics = this.matter.add.circle(160, 15, player_radius);
             player6visuals = this.add.circle(160, 15, player_radius, player_color);
 
-            //outside
-            
-            player7physics = this.matter.add.circle(160, 30, player_radius);
-            player7visuals = this.add.circle(160, 30, player_radius, player_color);
-            player8physics = this.matter.add.circle(160, 30, player_radius);
-            player8visuals = this.add.circle(160, 30, player_radius, player_color);
-            player9physics = this.matter.add.circle(160, 30, player_radius);
-            player9visuals = this.add.circle(160, 15, player_radius, player_color);
-            player10physics = this.matter.add.circle(180, 30, player_radius);
-            player10visuals = this.add.circle(160, 15, player_radius, player_color);
-            player11physics = this.matter.add.circle(180, 30, player_radius);
-            player11visuals = this.add.circle(160, 15, player_radius, player_color);
-            player12physics = this.matter.add.circle(180, 30, player_radius);
-            player12visuals = this.add.circle(160, 15, player_radius, player_color);
-            player13physics = this.matter.add.circle(180, 30, player_radius);
-            player13visuals = this.add.circle(160, 15, player_radius, player_color);
-            player14physics = this.matter.add.circle(180, 10, player_radius);
-            player14visuals = this.add.circle(160, 15, player_radius, player_color);
-            player15physics = this.matter.add.circle(180, 30, player_radius);
-            player15visuals = this.add.circle(160, 15, player_radius, player_color);
-            player16physics = this.matter.add.circle(180, 30, player_radius);
-            player16visuals = this.add.circle(160, 15, player_radius, player_color);
-            player17physics = this.matter.add.circle(120, 30, player_radius);
-            player17visuals = this.add.circle(160, 15, player_radius, player_color);
-            player18physics = this.matter.add.circle(120, 10, player_radius);
-            player18visuals = this.add.circle(160, 15, player_radius, player_color);
+            player7physics = this.matter.add.circle(160, 15, player_radius);
+            player7visuals = this.add.circle(160, 15, player_radius, player_color);
 
-            //base
+            player8physics = this.matter.add.circle(160, 15, player_radius);
+            player8visuals = this.add.circle(160, 15, player_radius, player_color);
+
+            player9physics = this.matter.add.circle(160, 15, player_radius);
+            player9visuals = this.add.circle(160, 15, player_radius, player_color);
+
+            //base connections
             this.matter.add.spring(player1physics, player2physics, spring_length, spring_strength);
+            this.matter.add.spring(player1physics, player3physics, spring_length, spring_strength);
+            this.matter.add.spring(player1physics, player4physics, spring_length, spring_strength);
+            this.matter.add.spring(player1physics, player5physics, spring_length, spring_strength);
+            this.matter.add.spring(player1physics, player6physics, spring_length, spring_strength);
+            this.matter.add.spring(player1physics, player7physics, spring_length, spring_strength);
+            this.matter.add.spring(player1physics, player8physics, spring_length, spring_strength);
+            this.matter.add.spring(player1physics, player9physics, spring_length, spring_strength);
+
+            //outer connections
             this.matter.add.spring(player2physics, player3physics, spring_length, spring_strength);
             this.matter.add.spring(player3physics, player4physics, spring_length, spring_strength);
             this.matter.add.spring(player4physics, player5physics, spring_length, spring_strength);
             this.matter.add.spring(player5physics, player6physics, spring_length, spring_strength);
-            this.matter.add.spring(player6physics, player1physics, spring_length, spring_strength);
-
-            this.matter.add.spring(player1physics, player3physics, spring_length, spring_strength);
-            this.matter.add.spring(player1physics, player5physics, spring_length, spring_strength);
-            this.matter.add.spring(player2physics, player4physics, spring_length, spring_strength);
-            this.matter.add.spring(player2physics, player6physics, spring_length, spring_strength);
-            this.matter.add.spring(player3physics, player5physics, spring_length, spring_strength);
-            this.matter.add.spring(player4physics, player6physics, spring_length, spring_strength);
-
-            //outside
+            this.matter.add.spring(player6physics, player7physics, spring_length, spring_strength);
             this.matter.add.spring(player7physics, player8physics, spring_length, spring_strength);
             this.matter.add.spring(player8physics, player9physics, spring_length, spring_strength);
-            this.matter.add.spring(player9physics, player10physics, spring_length, spring_strength);
-            this.matter.add.spring(player10physics, player11physics, spring_length, spring_strength);
-            this.matter.add.spring(player11physics, player12physics, spring_length, spring_strength);
-            this.matter.add.spring(player12physics, player13physics, spring_length, spring_strength);
-            this.matter.add.spring(player13physics, player14physics, spring_length, spring_strength);
-            this.matter.add.spring(player14physics, player15physics, spring_length, spring_strength);
-            this.matter.add.spring(player15physics, player16physics, spring_length, spring_strength);
-            this.matter.add.spring(player16physics, player17physics, spring_length, spring_strength);
-            this.matter.add.spring(player17physics, player18physics, spring_length, spring_strength);
-            this.matter.add.spring(player18physics, player1physics, spring_length, spring_strength);
-
-            //connections
-            this.matter.add.spring(player1physics, player7physics, spring_length_connect, spring_strength);
-            this.matter.add.spring(player2physics, player9physics, spring_length_connect, spring_strength);
-            this.matter.add.spring(player3physics, player11physics, spring_length_connect, spring_strength);
-            this.matter.add.spring(player4physics, player13physics, spring_length_connect, spring_strength);
-            this.matter.add.spring(player5physics, player15physics, spring_length_connect, spring_strength);
-            this.matter.add.spring(player6physics, player17physics, spring_length_connect, spring_strength);
+            this.matter.add.spring(player9physics, player2physics, spring_length, spring_strength);
 
             
             // Set up basic controls
