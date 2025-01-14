@@ -45,12 +45,11 @@
 
         function create() {
 
-            const spring_strength = 0.06;
+            const spring_strength = 0.02;
             const player_radius = 10;
             const player_color = 0xC54BB7;
             const spring_length = 1;
             const spring_length_connect = 1;
-            const outsidex = 30;
 
             if (this.matter) {
                 console.log('Matter.js is initialized!', this.matter);
@@ -96,29 +95,29 @@
 
             //outside
             
-            player7physics = this.matter.add.circle(160, outsidex, player_radius);
-            player7visuals = this.add.circle(160, outsidex, player_radius, player_color);
-            player8physics = this.matter.add.circle(160, outsidex, player_radius);
-            player8visuals = this.add.circle(160, 15, player_radius, player_color);
-            player9physics = this.matter.add.circle(160, outsidex, player_radius);
+            player7physics = this.matter.add.circle(160, 30, player_radius);
+            player7visuals = this.add.circle(160, 30, player_radius, player_color);
+            player8physics = this.matter.add.circle(160, 30, player_radius);
+            player8visuals = this.add.circle(160, 30, player_radius, player_color);
+            player9physics = this.matter.add.circle(160, 30, player_radius);
             player9visuals = this.add.circle(160, 15, player_radius, player_color);
-            player10physics = this.matter.add.circle(160, outsidex, player_radius);
+            player10physics = this.matter.add.circle(180, 30, player_radius);
             player10visuals = this.add.circle(160, 15, player_radius, player_color);
-            player11physics = this.matter.add.circle(160, outsidex, player_radius);
+            player11physics = this.matter.add.circle(180, 30, player_radius);
             player11visuals = this.add.circle(160, 15, player_radius, player_color);
-            player12physics = this.matter.add.circle(160, outsidex, player_radius);
+            player12physics = this.matter.add.circle(180, 30, player_radius);
             player12visuals = this.add.circle(160, 15, player_radius, player_color);
-            player13physics = this.matter.add.circle(160, outsidex, player_radius);
+            player13physics = this.matter.add.circle(180, 30, player_radius);
             player13visuals = this.add.circle(160, 15, player_radius, player_color);
-            player14physics = this.matter.add.circle(160, outsidex, player_radius);
+            player14physics = this.matter.add.circle(180, 10, player_radius);
             player14visuals = this.add.circle(160, 15, player_radius, player_color);
-            player15physics = this.matter.add.circle(160, outsidex, player_radius);
+            player15physics = this.matter.add.circle(180, 30, player_radius);
             player15visuals = this.add.circle(160, 15, player_radius, player_color);
-            player16physics = this.matter.add.circle(160, outsidex, player_radius);
+            player16physics = this.matter.add.circle(180, 30, player_radius);
             player16visuals = this.add.circle(160, 15, player_radius, player_color);
-            player17physics = this.matter.add.circle(160, outsidex, player_radius);
+            player17physics = this.matter.add.circle(120, 30, player_radius);
             player17visuals = this.add.circle(160, 15, player_radius, player_color);
-            player18physics = this.matter.add.circle(160, outsidex, player_radius);
+            player18physics = this.matter.add.circle(120, 10, player_radius);
             player18visuals = this.add.circle(160, 15, player_radius, player_color);
 
             //base
