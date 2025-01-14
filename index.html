@@ -167,7 +167,8 @@
             console.log("Scene created successfully!");
 
             this.input.keyboard.on('keydown-A', function (event) {
-                player1physics.setVelocity(100, 100);
+                player1physics.body.velocity.x = 100;
+                player1physics.body.velocity.y = 100;
 
             });
         }
