@@ -45,7 +45,7 @@
 
         function create() {
 
-            const spring_strength = 0.2;
+            const spring_strength = 1;
             const player_radius = 10;
             const player_color = 0xC54BB7;
             const spring_length = 100;
@@ -117,14 +117,14 @@
             this.matter.add.spring(player1physics, player9physics, spring_length, spring_strength);
 
             //outer connections
-            this.matter.add.spring(player2physics, player3physics, spring_length, spring_strength);
-            this.matter.add.spring(player3physics, player4physics, spring_length, spring_strength);
-            this.matter.add.spring(player4physics, player5physics, spring_length, spring_strength);
-            this.matter.add.spring(player5physics, player6physics, spring_length, spring_strength);
-            this.matter.add.spring(player6physics, player7physics, spring_length, spring_strength);
-            this.matter.add.spring(player7physics, player8physics, spring_length, spring_strength);
-            this.matter.add.spring(player8physics, player9physics, spring_length, spring_strength);
-            this.matter.add.spring(player9physics, player2physics, spring_length, spring_strength);
+            this.matter.add.spring(player2physics, player3physics, spring_length / 2, spring_strength);
+            this.matter.add.spring(player3physics, player4physics, spring_length / 2, spring_strength);
+            this.matter.add.spring(player4physics, player5physics, spring_length / 2, spring_strength);
+            this.matter.add.spring(player5physics, player6physics, spring_length / 2, spring_strength);
+            this.matter.add.spring(player6physics, player7physics, spring_length / 2, spring_strength);
+            this.matter.add.spring(player7physics, player8physics, spring_length / 2, spring_strength);
+            this.matter.add.spring(player8physics, player9physics, spring_length / 2, spring_strength);
+            this.matter.add.spring(player9physics, player2physics, spring_length / 2, spring_strength);
 
             
             // Set up basic controls
