@@ -155,21 +155,16 @@
             //Set the fill color for the polygon
             playerPolygon.fillStyle(0xFF00FF, 1); // Pink color
 
-            //Begin path
-            playerPolygon.beginPath();
+            playerPolygon.fillPolygon([
+                new Phaser.Math.Vector2(player2physics.position.x, player2physics.position.y),
+                new Phaser.Math.Vector2(player3physics.position.x, player3physics.position.y),
+                new Phaser.Math.Vector2(player4physics.position.x, player4physics.position.y),
+                new Phaser.Math.Vector2(player5physics.position.x, player5physics.position.y),
+                new Phaser.Math.Vector2(player6physics.position.x, player6physics.position.y),
+                new Phaser.Math.Vector2(player7physics.position.x, player7physics.position.y),
 
-            //Move to points
-            playerPolygon.moveTo(player2physics.position.x, player2physics.position.y);
-            playerPolygon.moveTo(player3physics.position.x, player3physics.position.y);
-            playerPolygon.moveTo(player4physics.position.x, player4physics.position.y); 
-            playerPolygon.moveTo(player5physics.position.x, player5physics.position.y);
-            playerPolygon.moveTo(player6physics.position.x, player6physics.position.y);
-            playerPolygon.moveTo(player2physics.position.x, player2physics.position.y);
+            ])
 
-            //Close the path and fill the polygon
-            playerPolygon.closePath();
-            playerPolygon.fillPath();  //Fill the polygon with the specified color
-            
         }
     </script>
 </body>
