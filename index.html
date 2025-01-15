@@ -35,7 +35,8 @@
         let platforms;
         let cursors;
         let pixelShader;
-
+        const playerPolygon = this.add.graphics();
+        
         function preload() {
              var url;
                 // Load the pixelation plugin
@@ -44,8 +45,6 @@
         }
 
         function create() {
-
-            const playerPolygon = this.add.graphics();
             
             const spring_strength = 0.04;
             const player_radius = 10;
