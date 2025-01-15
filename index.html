@@ -35,7 +35,6 @@
         let platforms;
         let cursors;
         let pixelShader;
-        let playerPolygon;
         
         function preload() {
              var url;
@@ -50,7 +49,6 @@
             const player_radius = 10;
             const player_color = 0xC54BB7;
             const spring_length = 100;
-            playerPolygon = this.add.graphics();
 
             if (this.matter) {
                 console.log('Matter.js is initialized!', this.matter);
@@ -132,6 +130,15 @@
                 player1physics.body.velocity.y = 100;
 
             });
+            var playerPolygon = scene.add.polygon(player1physics.position.x, player1physics.position.y,
+                [new Phaser.Math.Vector2(player2physics.position.x, player2physics.position.y),
+                new Phaser.Math.Vector2(player3physics.position.x, player3physics.position.y),
+                new Phaser.Math.Vector2(player4physics.position.x, player4physics.position.y),
+                new Phaser.Math.Vector2(player5physics.position.x, player5physics.position.y),
+                new Phaser.Math.Vector2(player6physics.position.x, player6physics.position.y),
+                new Phaser.Math.Vector2(player7physics.position.x, player7physics.position.y)],
+                0xFF00FF)
+                
         }
 
         function update(time, delta) {
@@ -148,36 +155,6 @@
             player6visuals.setPosition(player6physics.position.x, player6physics.position.y);
 
             player7visuals.setPosition(player7physics.position.x, player7physics.position.y);
-            
-            //Set the fill color for the polygon
-            playerPolygon.fillStyle(0xFF00FF, 1); // Pink color
-
-            //Begin path
-            playerPolygon.beginPath();
-
-            //Move to points
-            playerPolygon.moveTo(player2physics.position.x, player2physics.position.y);
-            playerPolygon.lineTo(player3physics.position.x, player3physics.position.y);
-
-            playerPolygon.moveTo(player3physics.position.x, player3physics.position.y);
-            playerPolygon.lineTo(player4physics.position.x, player4physics.position.y);
-
-            playerPolygon.moveTo(player4physics.position.x, player4physics.position.y);
-            playerPolygon.lineTo(player5physics.position.x, player5physics.position.y);
-
-            playerPolygon.moveTo(player5physics.position.x, player5physics.position.y);
-            playerPolygon.lineTo(player6physics.position.x, player6physics.position.y);
-
-            playerPolygon.moveTo(player6physics.position.x, player6physics.position.y);
-            playerPolygon.lineTo(player7physics.position.x, player7physics.position.y);
-
-            playerPolygon.moveTo(player7physics.position.x, player7physics.position.y);
-            playerPolygon.lineTo(player2physics.position.x, player2physics.position.y);
-            
-            //Close the path and fill the polygon
-            playerPolygon.closePath();
-            playerPolygon.fillPath();  //Fill the polygon with the specified color
-            
         }
     </script>
 </body>
