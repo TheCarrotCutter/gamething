@@ -51,12 +51,8 @@
             const player_radius = 10;
             const player_color = 0xC54BB7;
             const spring_length = 100;
-            playerGraphics = this.add.graphics(
-                fillStyle: {
-                    color: 0xffffff,
-                    alpha: 1
-                },
-            );
+            playerGraphics = this.add.graphics();
+            playerGraphics.fillStyle(0xffffff, alpha);
 
 
             if (this.matter) {
