@@ -45,6 +45,8 @@
 
         function create() {
 
+            const playerPolygon = this.add.graphics();
+            
             const spring_strength = 0.04;
             const player_radius = 10;
             const player_color = 0xC54BB7;
@@ -146,6 +148,27 @@
             player6visuals.setPosition(player6physics.position.x, player6physics.position.y);
 
             player7visuals.setPosition(player7physics.position.x, player7physics.position.y);
+
+            //Clear original polygon
+            playerPolygon.clear();
+    
+            //Set the fill color for the polygon
+            playerPolygon.fillStyle(0xFF00FF, 1); // Pink color
+
+            //Begin path
+            graphics.beginPath();
+
+            //Move to points
+            graphics.moveTo(player2physics.position.x, player2physics.position.y);
+            graphics.moveTo(player3physics.position.x, player3physics.position.y);
+            graphics.moveTo(player4physics.position.x, player4physics.position.y); 
+            graphics.moveTo(player5physics.position.x, player5physics.position.y);
+            graphics.moveTo(player6physics.position.x, player6physics.position.y);
+            graphics.moveTo(player2physics.position.x, player2physics.position.y);
+
+            //Close the path and fill the polygon
+            graphics.closePath();
+            graphics.fillPath();  //Fill the polygon with the specified color
             
         }
     </script>
