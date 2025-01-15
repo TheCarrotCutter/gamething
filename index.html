@@ -130,7 +130,7 @@
                 player1physics.body.velocity.y = 100;
 
             });
-            var playerPolygon = scene.add.polygon(player1physics.position.x, player1physics.position.y,
+            var playerPolygon = this.add.polygon(player1physics.position.x, player1physics.position.y,
                 [new Phaser.Math.Vector2(player2physics.position.x, player2physics.position.y),
                 new Phaser.Math.Vector2(player3physics.position.x, player3physics.position.y),
                 new Phaser.Math.Vector2(player4physics.position.x, player4physics.position.y),
