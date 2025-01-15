@@ -36,6 +36,7 @@
         let cursors;
         let pixelShader;
         var playerPolygon;
+        var playerGraphics;
         
         function preload() {
              var url;
@@ -50,6 +51,13 @@
             const player_radius = 10;
             const player_color = 0xC54BB7;
             const spring_length = 100;
+            playerGraphics = this.add.graphics(
+                fillStyle: {
+                    color: 0xffffff,
+                    alpha: 1
+                },
+            );
+
 
             if (this.matter) {
                 console.log('Matter.js is initialized!', this.matter);
@@ -156,6 +164,10 @@
             player6visuals.setPosition(player6physics.position.x, player6physics.position.y);
 
             player7visuals.setPosition(player7physics.position.x, player7physics.position.y);
+
+            playerGraphics.clear();
+
+            playerGraphics.fillPoints(polygon.points, true);
 
             playerPolygon.setTo([      
                 new Phaser.Math.Vector2(player2physics.position.x, player2physics.position.y),
