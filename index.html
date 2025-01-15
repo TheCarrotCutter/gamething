@@ -167,8 +167,7 @@
 
             playerGraphics.fillPoints(playerPolygon.points, true);
 
-            playerGraphics.beginPath();
-            playerGraphics.strokePath(playerPolygon);
+            playerGraphics.strokePoints(playerPolygon, true);
 
             playerPolygon.setTo([      
                 new Phaser.Math.Vector2(player2physics.position.x, player2physics.position.y),
