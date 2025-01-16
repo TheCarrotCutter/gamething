@@ -52,9 +52,6 @@ wwswwas<!DOCTYPE html>
             const player_color = 0xC54BB7;
             const spring_length = 100;
             playerGraphics = this.add.graphics();
-            playerGraphics.fillStyle(0xffffff, 1);
-            playerGraphics.lineStyle(18, 0xffffff, 1);
-            playerGraphics.setDepth(1);
 
 
             if (this.matter) {
@@ -152,7 +149,11 @@ wwswwas<!DOCTYPE html>
 
             playerGraphics.clear();
 
-            //playerGraphics.fillPoints(playerPolygon.points, true);
+            playerGraphics.fillStyle(0xffffff, 1);
+            playerGraphics.lineStyle(18, 0xffffff, 1);
+            playerGraphics.setDepth(1);
+
+            playerGraphics.fillPoints(playerPolygon.points, true);
 
             playerGraphics.strokePoints(playerPolygon.points, true);
         }
