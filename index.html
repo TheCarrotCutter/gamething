@@ -87,25 +87,18 @@
 
             //base
             player1physics = this.matter.add.circle(160, 15, player_radius);
-            player1visuals = this.add.circle(160, 15, player_radius, player_color);
 
             player2physics = this.matter.add.circle(160, 35, player_radius);
-            player2visuals = this.add.circle(160, 15, player_radius, 0x3ab88e); //cyan
 
             player3physics = this.matter.add.circle(170, 25, player_radius);
-            player3visuals = this.add.circle(160, 15, player_radius, 0x57b83a); //green
 
             player4physics = this.matter.add.circle(180, 15, player_radius);
-            player4visuals = this.add.circle(160, 15, player_radius, player_color); //default
 
             player5physics = this.matter.add.circle(170, 5, player_radius);
-            player5visuals = this.add.circle(160, 15, player_radius, 0x943ab8); //purple
 
             player6physics = this.matter.add.circle(160, -5, player_radius);
-            player6visuals = this.add.circle(160, 15, player_radius, 0xb83a42); //red
 
             player7physics = this.matter.add.circle(150, 5, player_radius);
-            player7visuals = this.add.circle(160, 15, player_radius, 0xb88a3a); //tan
 
             //base connections
             this.matter.add.spring(player1physics, player2physics, spring_length, spring_strength);
@@ -144,30 +137,11 @@
                 new Phaser.Math.Vector2(player5physics.position.x, player5physics.position.y),
                 new Phaser.Math.Vector2(player6physics.position.x, player6physics.position.y),
                 new Phaser.Math.Vector2(player7physics.position.x, player7physics.position.y)]
-                );
+            );
 
         }
 
         function update(time, delta) {
-            player1visuals.setPosition(player1physics.position.x, player1physics.position.y);
-
-            player2visuals.setPosition(player2physics.position.x, player2physics.position.y);
-
-            player3visuals.setPosition(player3physics.position.x, player3physics.position.y);
-
-            player4visuals.setPosition(player4physics.position.x, player4physics.position.y);
-
-            player5visuals.setPosition(player5physics.position.x, player5physics.position.y);
-
-            player6visuals.setPosition(player6physics.position.x, player6physics.position.y);
-
-            player7visuals.setPosition(player7physics.position.x, player7physics.position.y);
-
-            playerGraphics.clear();
-
-            playerGraphics.fillPoints(playerPolygon.points, true);
-
-            playerGraphics.strokePoints(playerPolygon, true);
 
             playerPolygon.setTo([      
                 new Phaser.Math.Vector2(player2physics.position.x, player2physics.position.y),
@@ -177,6 +151,13 @@
                 new Phaser.Math.Vector2(player6physics.position.x, player6physics.position.y),
                 new Phaser.Math.Vector2(player7physics.position.x, player7physics.position.y)]
             );
+
+            playerGraphics.clear();
+
+            playerGraphics.fillPoints(playerPolygon.points, true);
+
+            playerGraphics.strokePoints(playerPolygon, true);
+            
             console.log(playerPolygon)
             console.log(playerGraphics)
         }
