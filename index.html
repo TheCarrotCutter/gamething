@@ -141,9 +141,11 @@
             
             this.input.keyboard.on('keydown-1', () => {
                 this.matter.world.drawDebug = true;
+                this.matter.world.debugGraphic.clear();
             });
             this.input.keyboard.on('keydown-2', () => {
                 this.matter.world.drawDebug = false;
+                this.matter.world.debugGraphic.clear();
             });
         }
 
