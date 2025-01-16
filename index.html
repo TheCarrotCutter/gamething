@@ -126,7 +126,7 @@
             console.log("Scene created successfully!");
 
             this.input.keyboard.on('keydown-A', function (event) {
-                matter.body.setVelocity(player1physics, (100, 100));
+                Matter.Body.setVelocity(player1physics, { x: 100, y: 100 });
 
             });
             playerPolygon = new Phaser.Geom.Polygon(
