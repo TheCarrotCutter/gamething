@@ -37,7 +37,6 @@ wwswwas<!DOCTYPE html>
         let pixelShader;
         var playerPolygon;
         var playerGraphics;
-        let player1physics;
         
         function preload() {
              var url;
@@ -87,19 +86,19 @@ wwswwas<!DOCTYPE html>
             this.add.rectangle(0, 600, 2000, 32, 0x6600ff);
 
             //base
-            player1physics = this.matter.add.circle(160, 15, player_radius);
+            let player1physics = this.matter.add.circle(160, 15, player_radius);
 
-            player2physics = this.matter.add.circle(160, 35, player_radius);
+            let player2physics = this.matter.add.circle(160, 35, player_radius);
 
-            player3physics = this.matter.add.circle(170, 25, player_radius);
+            let player3physics = this.matter.add.circle(170, 25, player_radius);
 
-            player4physics = this.matter.add.circle(180, 15, player_radius);
+            let player4physics = this.matter.add.circle(180, 15, player_radius);
 
-            player5physics = this.matter.add.circle(170, 5, player_radius);
+            let player5physics = this.matter.add.circle(170, 5, player_radius);
 
-            player6physics = this.matter.add.circle(160, -5, player_radius);
+            let player6physics = this.matter.add.circle(160, -5, player_radius);
 
-            player7physics = this.matter.add.circle(150, 5, player_radius);
+            let player7physics = this.matter.add.circle(150, 5, player_radius);
 
             //base connections
             this.matter.add.spring(player1physics, player2physics, spring_length, spring_strength);
