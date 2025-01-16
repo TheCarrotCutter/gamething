@@ -126,8 +126,8 @@
             console.log("Scene created successfully!");
 
             this.input.keyboard.on('keydown-A', function (event) {
-                player1physics.body.velocity.x = 100;
-                player1physics.body.velocity.y = 100;
+                player1physics.velocity.x = 100;
+                player1physics.velocity.y = 100;
 
             });
             playerPolygon = new Phaser.Geom.Polygon(
@@ -138,13 +138,6 @@
                 new Phaser.Math.Vector2(player6physics.position.x, player6physics.position.y),
                 new Phaser.Math.Vector2(player7physics.position.x, player7physics.position.y)]
             );
-            
-            this.input.keyboard.on('keydown-P', () => {
-                this.matter.world.drawDebug = 'true';
-            });
-            this.input.keyboard.on('keydown-O', () => {
-                this.matter.world.drawDebug = 'false';
-            });
         }
 
         function update(time, delta) {
