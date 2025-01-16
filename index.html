@@ -139,9 +139,9 @@
                 new Phaser.Math.Vector2(player7physics.position.x, player7physics.position.y)]
             );
             
-
+            this.input.keyboard.on('keydown-D', () => {
                 this.matter.world.drawDebug = debugEnabled;
-
+            };
         }
 
         function update(time, delta) {
