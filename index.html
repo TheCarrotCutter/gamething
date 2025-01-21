@@ -37,8 +37,9 @@ wwswwas<!DOCTYPE html>
         let pixelShader;
         var playerPolygon;
         var playerGraphics;
-        
-        const playerLineSize = 18;
+
+        const playerSizeMult = 1;
+        const playerLineSize = 18 * playerSizeMult;
         
         function preload() {
              var url;
@@ -50,9 +51,9 @@ wwswwas<!DOCTYPE html>
         function create() {
             
             const spring_strength = 0.04;
-            const player_radius = 10;
+            const player_radius = 10 * playerSizeMult;
             const player_color = 0xC54BB7;
-            const spring_length = 100;
+            const spring_length = 100 * playerSizeMult;
             playerGraphics = this.add.graphics();
 
 
