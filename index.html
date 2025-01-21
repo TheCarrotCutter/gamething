@@ -48,9 +48,10 @@ wwswwas<!DOCTYPE html>
         function create() {
             
             const spring_strength = 0.04;
-            const player_radius = 2.5;
+            const player_radius = 10;
             const player_color = 0xC54BB7;
-            const spring_length = 25;
+            const spring_length = 100;
+            const playerLineSize = 18;
             playerGraphics = this.add.graphics();
 
 
@@ -152,7 +153,7 @@ wwswwas<!DOCTYPE html>
             playerGraphics.clear();
 
             playerGraphics.fillStyle(0xffffff, 1);
-            playerGraphics.lineStyle(18, 0xffffff, 1);
+            playerGraphics.lineStyle(playerLineSize, 0xffffff, 1);
             playerGraphics.setDepth(1);
 
             playerGraphics.fillPoints(playerPolygon.points, true);
