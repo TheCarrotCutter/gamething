@@ -31,7 +31,7 @@ wwswwas<!DOCTYPE html>
         // Game instance
         const game = new Phaser.Game(config);
 
-        let player1;
+        let player1physics;
         let platforms;
         let cursors;
         let pixelShader;
@@ -126,7 +126,7 @@ wwswwas<!DOCTYPE html>
             console.log("Scene created successfully!");
 
             this.input.keyboard.on('keydown-A', function (event) {
-                player1physics.setVelocity(100, 100);
+                this.player1physics.setVelocity(100, 100);
 
             });
             playerPolygon = new Phaser.Geom.Polygon(
