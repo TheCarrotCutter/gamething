@@ -126,7 +126,7 @@ wwswwas<!DOCTYPE html>
             console.log("Scene created successfully!");
 
             this.input.keyboard.on('keydown-A', function (event) {
-                this.player1physics.setVelocity(100, 100);
+                this.matter.player1physics.setVelocity(100, 100);
 
             });
             playerPolygon = new Phaser.Geom.Polygon(
