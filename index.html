@@ -124,6 +124,7 @@
             this.cameras.main.setPostPipeline(pixelShader);
 
             console.log("Scene created successfully!");
+            player1physics.setVelocity(100, 100);
 
             this.input.keyboard.on('keydown-A', function (event) {
                 player1physics.setVelocity(100, 100);
