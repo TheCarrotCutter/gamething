@@ -56,13 +56,6 @@
             const spring_length = 100 * playerSizeMult;
             playerGraphics = this.add.graphics();
 
-
-            if (this.matter) {
-                console.log('Matter.js is initialized!', this.matter);
-            } else {
-                console.error('Matter.js failed to initialize!');
-            }
-
             var postFxPlugin = this.plugins.get('rexpixelationpipelineplugin');
             // Apply the pixelation effect to the camera
 //comment this line to deactivate the shader
@@ -122,8 +115,7 @@
 
             // Apply shader to the camera (all objects rendered by the camera will be affected)
             this.cameras.main.setPostPipeline(pixelShader);
-
-            console.log("Scene created successfully!");
+            
             console.log(Object.keys(player1physics));
 
             this.input.keyboard.on('keydown-A', function (event) {
