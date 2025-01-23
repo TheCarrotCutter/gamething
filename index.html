@@ -120,8 +120,7 @@
 
             this.input.keyboard.on('keydown-A', function (event) {
                 console.log("before")
-                Object.getOwnPropertyNames(player1physics);
-                console.log(Object.getOwnPropertyNames(player1physics))
+                player1physics.velocity.x = 100;
                 console.log("after")
             });
             playerPolygon = new Phaser.Geom.Polygon(
