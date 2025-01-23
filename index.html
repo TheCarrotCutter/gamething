@@ -119,7 +119,8 @@
             console.log(Object.keys(player1physics));
 
             this.input.keyboard.on('keydown-A', function (event) {
-                Matter.Body.setVelocity(player1physics.body, { x: 100, y: 100 });
+                player1physics.setVelocity(100, 100);
+                console.log("ok")
             });
             playerPolygon = new Phaser.Geom.Polygon(
                 [new Phaser.Math.Vector2(player2physics.position.x, player2physics.position.y),
