@@ -116,11 +116,11 @@
             // Apply shader to the camera (all objects rendered by the camera will be affected)
             this.cameras.main.setPostPipeline(pixelShader);
             
-            console.log(Object.keys(player1physics));
+            player1physics.getOwnPropertyNames();
 
             this.input.keyboard.on('keydown-A', function (event) {
                 console.log("before")
-                player1physics.setVelocity(100, 100);
+                player1physics.getOwnPropertyNames()
                 console.log("after")
             });
             playerPolygon = new Phaser.Geom.Polygon(
