@@ -116,7 +116,7 @@
             // Apply shader to the camera (all objects rendered by the camera will be affected)
             this.cameras.main.setPostPipeline(pixelShader);
             
-            player1physics.getOwnPropertyNames();
+            Object.getOwnPropertyNames(player1physics);
 
             this.input.keyboard.on('keydown-A', function (event) {
                 console.log("before")
