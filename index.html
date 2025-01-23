@@ -118,10 +118,17 @@
             
             Object.getOwnPropertyNames(player1physics);
 
+            this.input.keyboard.on('keydown-W', function (event) {
+                player1physics.force.y = -0.02;
+            });
             this.input.keyboard.on('keydown-A', function (event) {
-                console.log("before")
-                player1physics.setVelocity(100, player1physics.velocity.x);
-                console.log("after")
+                player1physics.force.x = -0.01;
+            });
+            this.input.keyboard.on('keydown-S', function (event) {
+                player1physics.force.y = 0.02;
+            });
+            this.input.keyboard.on('keydown-D', function (event) {
+                player1physics.force.x = 0.01;
             });
             playerPolygon = new Phaser.Geom.Polygon(
                 [new Phaser.Math.Vector2(player2physics.position.x, player2physics.position.y),
