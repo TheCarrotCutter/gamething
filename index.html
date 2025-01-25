@@ -54,6 +54,8 @@
             const player_radius = 10 * playerSizeMult;
             const player_color = 0xC54BB7;
             const spring_length = 100 * playerSizeMult;
+            const jump_height = 0.001;
+            const x_speed = 0.001;
             playerGraphics = this.add.graphics();
 
             var postFxPlugin = this.plugins.get('rexpixelationpipelineplugin');
@@ -119,40 +121,40 @@
             Object.getOwnPropertyNames(player1physics);
 
             this.input.keyboard.on('keydown-W', function (event) {
-                    player1physics.force.y = -0.005;
-                    player2physics.force.y = -0.005;
-                    player3physics.force.y = -0.005;
-                    player4physics.force.y = -0.005;
-                    player5physics.force.y = -0.005;
-                    player6physics.force.y = -0.005;
-                    player7physics.force.y = -0.005;
+                    player1physics.force.y = -jump_height;
+                    player2physics.force.y = -jump_height;
+                    player3physics.force.y = -jump_height;
+                    player4physics.force.y = -jump_height;
+                    player5physics.force.y = -jump_height;
+                    player6physics.force.y = -jump_height;
+                    player7physics.force.y = -jump_height;
             });
             this.input.keyboard.on('keydown-A', function (event) {
-                    player1physics.force.x = -0.001;
-                    player2physics.force.x = -0.001;
-                    player3physics.force.x = -0.001;
-                    player4physics.force.x = -0.001;
-                    player5physics.force.x = -0.001;
-                    player6physics.force.x = -0.001;
-                    player7physics.force.x = -0.001;
+                    player1physics.force.x = -x_speed;
+                    player2physics.force.x = -x_speed;
+                    player3physics.force.x = -x_speed;
+                    player4physics.force.x = -x_speed;
+                    player5physics.force.x = -x_speed;
+                    player6physics.force.x = -x_speed;
+                    player7physics.force.x = -x_speed;
             });
             this.input.keyboard.on('keydown-S', function (event) {
-                    player1physics.force.y = 0.005;
-                    player2physics.force.y = 0.005;
-                    player3physics.force.y = 0.005;
-                    player4physics.force.y = 0.005;
-                    player5physics.force.y = 0.005;
-                    player6physics.force.y = 0.005;
-                    player7physics.force.y = 0.005;
+                    player1physics.force.y = jump_height;
+                    player2physics.force.y = jump_height;
+                    player3physics.force.y = jump_height;
+                    player4physics.force.y = jump_height;
+                    player5physics.force.y = jump_height;
+                    player6physics.force.y = jump_height;
+                    player7physics.force.y = jump_height;
             });
             this.input.keyboard.on('keydown-D', function (event) {
-                    player1physics.force.x = 0.001;
-                    player2physics.force.x = 0.001;
-                    player3physics.force.x = 0.001;
-                    player4physics.force.x = 0.001;
-                    player5physics.force.x = 0.001;
-                    player6physics.force.x = 0.001;
-                    player7physics.force.x = 0.001;
+                    player1physics.force.x = x_speed;
+                    player2physics.force.x = x_speed;
+                    player3physics.force.x = x_speed;
+                    player4physics.force.x = x_speed;
+                    player5physics.force.x = x_speed;
+                    player6physics.force.x = x_speed;
+                    player7physics.force.x = x_speed;
             });
             playerPolygon = new Phaser.Geom.Polygon(
                 [new Phaser.Math.Vector2(player2physics.position.x, player2physics.position.y),
