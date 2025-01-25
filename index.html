@@ -119,7 +119,6 @@
             Object.getOwnPropertyNames(player1physics);
 
             this.input.keyboard.on('keydown-W', function (event) {
-                if (player1physics.velocity.y > -0.01) {
                     player1physics.force.y = -0.005;
                     player2physics.force.y = -0.005;
                     player3physics.force.y = -0.005;
@@ -127,10 +126,8 @@
                     player5physics.force.y = -0.005;
                     player6physics.force.y = -0.005;
                     player7physics.force.y = -0.005;
-                };
             });
             this.input.keyboard.on('keydown-A', function (event) {
-                if (player1physics.velocity.x > -0.01) {
                     player1physics.force.x = -0.001;
                     player2physics.force.x = -0.001;
                     player3physics.force.x = -0.001;
@@ -138,10 +135,8 @@
                     player5physics.force.x = -0.001;
                     player6physics.force.x = -0.001;
                     player7physics.force.x = -0.001;
-                };
             });
             this.input.keyboard.on('keydown-S', function (event) {
-                if (player1physics.velocity.y < 0.01) {
                     player1physics.force.y = 0.005;
                     player2physics.force.y = 0.005;
                     player3physics.force.y = 0.005;
@@ -149,10 +144,8 @@
                     player5physics.force.y = 0.005;
                     player6physics.force.y = 0.005;
                     player7physics.force.y = 0.005;
-                };
             });
             this.input.keyboard.on('keydown-D', function (event) {
-                if (player1physics.velocity.x < 0.01) {
                     player1physics.force.x = 0.001;
                     player2physics.force.x = 0.001;
                     player3physics.force.x = 0.001;
@@ -160,7 +153,6 @@
                     player5physics.force.x = 0.001;
                     player6physics.force.x = 0.001;
                     player7physics.force.x = 0.001;
-                };
             });
             playerPolygon = new Phaser.Geom.Polygon(
                 [new Phaser.Math.Vector2(player2physics.position.x, player2physics.position.y),
