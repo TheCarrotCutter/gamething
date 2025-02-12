@@ -141,13 +141,13 @@ WASD to move
                     player7physics.force.x = -x_speed;
             });
             this.input.keyboard.on('keydown-S', function (event) {
-                    player1physics.force.y = jump_height;
-                    player2physics.force.y = jump_height;
-                    player3physics.force.y = jump_height;
-                    player4physics.force.y = jump_height;
-                    player5physics.force.y = jump_height;
-                    player6physics.force.y = jump_height;
-                    player7physics.force.y = jump_height;
+                    player1physics.force.y = jump_height*1.5;
+                    player2physics.force.y = jump_height*1.5;
+                    player3physics.force.y = jump_height*1.5;
+                    player4physics.force.y = jump_height*1.5;
+                    player5physics.force.y = jump_height*1.5;
+                    player6physics.force.y = jump_height*1.5;
+                    player7physics.force.y = jump_height*1.5;
             });
             this.input.keyboard.on('keydown-D', function (event) {
                     player1physics.force.x = x_speed;
