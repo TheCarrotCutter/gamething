@@ -113,6 +113,13 @@ WASD to move
             this.matter.add.spring(player6physics, player7physics, spring_length, spring_strength);
             this.matter.add.spring(player7physics, player2physics, spring_length, spring_strength);
 
+            //other outers
+            this.matter.add.spring(player2physics, player4physics, spring_length*2, spring_strength);
+            this.matter.add.spring(player3physics, player5physics, spring_length*2, spring_strength);
+            this.matter.add.spring(player5physics, player7physics, spring_length*2, spring_strength);
+            this.matter.add.spring(player7physics, player3physics, spring_length*2, spring_strength);
+            this.matter.add.spring(player4physics, player6physics, spring_length*2, spring_strength);
+            this.matter.add.spring(player2physics, player6physics, spring_length*2, spring_strength);
             
             // Set up basic controls
             cursors = this.input.keyboard.createCursorKeys();
