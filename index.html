@@ -121,7 +121,7 @@ WASD to move
             this.cameras.main.setPostPipeline(pixelShader);
 
             this.input.keyboard.on('keydown-W', function (event) {
-                    player1physics.force.y = -jump_height;
+                   // player1physics.force.y = -jump_height;
                     player2physics.force.y = -jump_height;
                     player3physics.force.y = -jump_height;
                     player4physics.force.y = -jump_height;
@@ -130,7 +130,7 @@ WASD to move
                     player7physics.force.y = -jump_height;
             });
             this.input.keyboard.on('keydown-A', function (event) {
-                    player1physics.force.x = -x_speed;
+               //     player1physics.force.x = -x_speed;
                     player2physics.force.x = -x_speed;
                     player3physics.force.x = -x_speed;
                     player4physics.force.x = -x_speed;
@@ -139,7 +139,7 @@ WASD to move
                     player7physics.force.x = -x_speed;
             });
             this.input.keyboard.on('keydown-S', function (event) {
-                    player1physics.force.y = jump_height*1.5;
+     //               player1physics.force.y = jump_height*1.5;
                     player2physics.force.y = jump_height*1.5;
                     player3physics.force.y = jump_height*1.5;
                     player4physics.force.y = jump_height*1.5;
@@ -148,7 +148,7 @@ WASD to move
                     player7physics.force.y = jump_height*1.5;
             });
             this.input.keyboard.on('keydown-D', function (event) {
-                    player1physics.force.x = x_speed;
+ //                   player1physics.force.x = x_speed;
                     player2physics.force.x = x_speed;
                     player3physics.force.x = x_speed;
                     player4physics.force.x = x_speed;
