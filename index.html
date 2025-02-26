@@ -13,13 +13,13 @@ WASD to move
         // Phaser game configuration
         const config = {
             type: Phaser.AUTO,
-            width: 1300,
+            width: 600,
             height: 600,
             pixelArt: true,
             physics: {
                 default: 'matter',
                 matter: {
-                    gravity: { y: 1 },
+                    gravity: { y: 0 },
                     debug: false
                 }
             },
@@ -32,169 +32,15 @@ WASD to move
 
         // Game instance
         const game = new Phaser.Game(config);
-
-        let player1physics;
-        let platforms;
-        let cursors;
-        let pixelShader;
-        var playerPolygon;
-        var playerGraphics;
-
-        const playerSizeMult = 0.5;
-        const playerLineSize = 18 * playerSizeMult;
         
         function preload() {
-             var url;
-                // Load the pixelation plugin
-                url = 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexpixelationpipelineplugin.min.js';
-                this.load.plugin('rexpixelationpipelineplugin', url, true);
         }
 
         function create() {
-            
-            const spring_strength = 10;
-            const player_radius = 10 * playerSizeMult;
-            const player_color = 0xC54BB7;
-            const spring_length = 100 * playerSizeMult;
-            const jump_height = 0.003;
-            const x_speed = 0.001;
-            playerGraphics = this.add.graphics();
-
-            var postFxPlugin = this.plugins.get('rexpixelationpipelineplugin');
-            // Apply the pixelation effect to the camera
-//comment this line to deactivate the shader
-            this.cameraFilter = postFxPlugin.add(this.cameras.main);
-//and these
-            this.cameraFilter.pixelWidth = 0.5;  //5
-            this.cameraFilter.pixelHeight = 0.5;
-            
-            // Create a simple sky background using a rectangle
-            this.add.rectangle(400, 300, 1300, 700, 0x87CEEB);  // Sky Blue
-
-            // Create static platforms using simple rectangles
-
-            this.matter.add.rectangle(400, 568, 200, 32, { isStatic: true });
-            this.matter.add.rectangle(600, 400, 200, 32, { isStatic: true });
-            this.matter.add.rectangle(50, 250, 200, 32, { isStatic: true });
-            this.matter.add.rectangle(0, 600, 2000, 32, { isStatic: true });
-            this.add.rectangle(400, 568, 200, 32, 0x6600ff);
-            this.add.rectangle(600, 400, 200, 32, 0x6600ff);
-            this.add.rectangle(50, 250, 200, 32, 0x6600ff);
-            this.add.rectangle(0, 600, 2000, 32, 0x6600ff);
-
-            //base
-            //player1physics = this.matter.add.circle(160, 15, player_radius);
-
-            player2physics = this.matter.add.circle(160, 35, player_radius);
-
-            player3physics = this.matter.add.circle(170, 25, player_radius);
-
-            player4physics = this.matter.add.circle(180, 15, player_radius);
-
-            player5physics = this.matter.add.circle(170, 5, player_radius);
-
-            player6physics = this.matter.add.circle(160, -5, player_radius);
-
-            player7physics = this.matter.add.circle(150, 5, player_radius);
-
-            //base connections
-//            this.matter.add.spring(player1physics, player2physics, spring_length, spring_strength);
-  //          this.matter.add.spring(player1physics, player3physics, spring_length, spring_strength);
-    //        this.matter.add.spring(player1physics, player4physics, spring_length, spring_strength);
-      //      this.matter.add.spring(player1physics, player5physics, spring_length, spring_strength);
-        //    this.matter.add.spring(player1physics, player6physics, spring_length, spring_strength);
-          //  this.matter.add.spring(player1physics, player7physics, spring_length, spring_strength);
-
-            //outer connections
-            this.matter.add.spring(player2physics, player3physics, spring_length, spring_strength);
-            this.matter.add.spring(player3physics, player4physics, spring_length, spring_strength);
-            this.matter.add.spring(player4physics, player5physics, spring_length, spring_strength);
-            this.matter.add.spring(player5physics, player6physics, spring_length, spring_strength);
-            this.matter.add.spring(player6physics, player7physics, spring_length, spring_strength);
-            this.matter.add.spring(player7physics, player2physics, spring_length, spring_strength);
-
-            //other outers
-            this.matter.add.spring(player2physics, player4physics, spring_length*2, spring_strength);
-            this.matter.add.spring(player3physics, player5physics, spring_length*2, spring_strength);
-            this.matter.add.spring(player5physics, player7physics, spring_length*2, spring_strength);
-            this.matter.add.spring(player7physics, player3physics, spring_length*2, spring_strength);
-            this.matter.add.spring(player4physics, player6physics, spring_length*2, spring_strength);
-            this.matter.add.spring(player2physics, player6physics, spring_length*2, spring_strength);
-            
-            // Set up basic controls
-            cursors = this.input.keyboard.createCursorKeys();
-
-            // Apply shader to the camera (all objects rendered by the camera will be affected)
-            this.cameras.main.setPostPipeline(pixelShader);
-
-            this.input.keyboard.on('keydown-W', function (event) {
-                   // player1physics.force.y = -jump_height;
-                    player2physics.force.y = -jump_height;
-                    player3physics.force.y = -jump_height;
-                    player4physics.force.y = -jump_height;
-                    player5physics.force.y = -jump_height;
-                    player6physics.force.y = -jump_height;
-                    player7physics.force.y = -jump_height;
-            });
-            this.input.keyboard.on('keydown-A', function (event) {
-               //     player1physics.force.x = -x_speed;
-                    player2physics.force.x = -x_speed;
-                    player3physics.force.x = -x_speed;
-                    player4physics.force.x = -x_speed;
-                    player5physics.force.x = -x_speed;
-                    player6physics.force.x = -x_speed;
-                    player7physics.force.x = -x_speed;
-            });
-            this.input.keyboard.on('keydown-S', function (event) {
-     //               player1physics.force.y = jump_height*1.5;
-                    player2physics.force.y = jump_height*1.5;
-                    player3physics.force.y = jump_height*1.5;
-                    player4physics.force.y = jump_height*1.5;
-                    player5physics.force.y = jump_height*1.5;
-                    player6physics.force.y = jump_height*1.5;
-                    player7physics.force.y = jump_height*1.5;
-            });
-            this.input.keyboard.on('keydown-D', function (event) {
- //                   player1physics.force.x = x_speed;
-                    player2physics.force.x = x_speed;
-                    player3physics.force.x = x_speed;
-                    player4physics.force.x = x_speed;
-                    player5physics.force.x = x_speed;
-                    player6physics.force.x = x_speed;
-                    player7physics.force.x = x_speed;
-            });
-            playerPolygon = new Phaser.Geom.Polygon(
-                [new Phaser.Math.Vector2(player2physics.position.x, player2physics.position.y),
-                new Phaser.Math.Vector2(player3physics.position.x, player3physics.position.y),
-                new Phaser.Math.Vector2(player4physics.position.x, player4physics.position.y),
-                new Phaser.Math.Vector2(player5physics.position.x, player5physics.position.y),
-                new Phaser.Math.Vector2(player6physics.position.x, player6physics.position.y),
-                new Phaser.Math.Vector2(player7physics.position.x, player7physics.position.y)]
-            );
+            this.matter.add.circle(300, 300, 10);
         }
 
         function update(time, delta) {
-
-            playerPolygon.setTo([      
-                new Phaser.Math.Vector2(player2physics.position.x, player2physics.position.y),
-                new Phaser.Math.Vector2(player3physics.position.x, player3physics.position.y),
-                new Phaser.Math.Vector2(player4physics.position.x, player4physics.position.y),
-                new Phaser.Math.Vector2(player5physics.position.x, player5physics.position.y),
-                new Phaser.Math.Vector2(player6physics.position.x, player6physics.position.y),
-                new Phaser.Math.Vector2(player7physics.position.x, player7physics.position.y),
-                new Phaser.Math.Vector2(player2physics.position.x, player2physics.position.y),
-                new Phaser.Math.Vector2(player3physics.position.x, player3physics.position.y)]
-            );
-
-            playerGraphics.clear();
-
-            playerGraphics.fillStyle(0xffffff, 1);
-            playerGraphics.lineStyle(playerLineSize, 0xffffff, 1);
-            playerGraphics.setDepth(1);
-
-            playerGraphics.fillPoints(playerPolygon.points, true);
-
-            playerGraphics.strokePoints(playerPolygon.points, true);
         }
     </script>
 </body>
