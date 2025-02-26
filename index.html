@@ -30,6 +30,9 @@ WASD to move
             }
         };
 
+        let player;
+        let playerGraphics
+
         // Game instance
         const game = new Phaser.Game(config);
         
@@ -37,10 +40,14 @@ WASD to move
         }
 
         function create() {
-            this.matter.add.circle(300, 300, 10);
+            player = this.matter.add.circle(300, 300, 10);
+
+            playerGraphics = this.add.graphics();
         }
 
         function update(time, delta) {
+            playerGraphics.clear();
+            playerGraphics.fullCircleShape(player);
         }
     </script>
 </body>
