@@ -59,7 +59,9 @@ WASD to move
             playerGraphics.fillCircleShape(playerCircle);
             playerCircle.setPosition(player.position.x, player.position.x);
         }
-gameCanvas.requestPointerLock();
+gameCanvas.addEventListener("click", async () => {
+  await gameCanvas.requestPointerLock();
+});
     </script>
 </body>
 </html>
