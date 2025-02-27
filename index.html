@@ -59,7 +59,14 @@ WASD to move
             playerCircle.setPosition(player.position.x, player.position.x);
             
             gameCanvas.requestPointerLock();
+            console.log(mouseMoveX, mouseMoveY);
         }
+
+        document.addEventListener('mousemove', function(event) {
+            mouseMoveX = event.movementX;
+            mouseMoveY = event.movementY;
+        });
+
     </script>
 </body>
 </html>
