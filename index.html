@@ -41,6 +41,9 @@ WASD to move
         }
 
         function create() {
+
+            gameCanvas = game.canvas
+            
             player = this.matter.add.circle(300, 300, 15);
 
             playerGraphics = this.add.graphics();
@@ -54,8 +57,6 @@ WASD to move
             playerGraphics.clear();
             playerGraphics.fillCircleShape(playerCircle);
             playerCircle.setPosition(player.position.x, player.position.x);
-
-            
         }
 requestPointerLock();
     </script>
