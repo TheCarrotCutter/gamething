@@ -41,18 +41,19 @@ WASD to move
         }
 
         function create() {
-            player = this.matter.add.circle(300, 300, 10);
+            player = this.matter.add.circle(300, 300, 15);
 
             playerGraphics = this.add.graphics();
             playerGraphics.fillStyle(20, 0xffffff, 1);
 
-            playerCircle = new Phaser.Geom.Circle(300, 300, 20);
+            playerCircle = new Phaser.Geom.Circle(300, 300, 15);
 
         }
 
         function update(time, delta) {
             playerGraphics.clear();
-            playerGraphics.fillCircleShape(playerCircle);
+   //         playerGraphics.fillCircleShape(playerCircle);
+            playerCircle.setPosition(player.position.x, player.position.x);
 
             
         }
