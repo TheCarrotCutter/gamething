@@ -48,7 +48,10 @@ WASD to move
 
         function update(time, delta) {
             playerGraphics.clear();
-            playerGraphics.strokePoints([new Phaser.Math.Vector2(300, 300)], true);
+            playerGraphics.beginPath();
+            playerGraphics.moveTo(300, 300);
+            playerGraphics.closePath();
+            playerGraphics.lineTo(300, 300);
             console.log(player.position.x);
         }
     </script>
