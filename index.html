@@ -51,14 +51,14 @@ WASD to move
             playerGraphics.fillStyle(20, 0xffffff, 1);
 
             playerCircle = new Phaser.Geom.Circle(300, 300, 15);
-
-            gameCanvas.requestPointerLock();
         }
 
         function update(time, delta) {
             playerGraphics.clear();
             playerGraphics.fillCircleShape(playerCircle);
             playerCircle.setPosition(player.position.x, player.position.x);
+            
+            gameCanvas.requestPointerLock();
         }
     </script>
 </body>
