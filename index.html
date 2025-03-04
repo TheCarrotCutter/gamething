@@ -32,8 +32,8 @@
         let playerGraphics
         let playerCircle
         let gameCanvas
-        let mouseMoveX
-        let mouseMoveY
+        let mouseMoveX = 0;
+        let mouseMoveY = 0;
 
         // Game instance
         const game = new Phaser.Game(config);
@@ -51,6 +51,8 @@
             playerGraphics.fillStyle(20, 0xffffff, 1);
 
             playerCircle = new Phaser.Geom.Circle(300, 300, 15);
+            
+            
         }
 
         function update(time, delta) {
@@ -60,32 +62,20 @@
             
             gameCanvas.requestPointerLock();
 
-            //player.position.x = player.position.x + mouseMoveX;
-            //player.position.y = player.position.y + mouseMoveY;
-
-            mouseMoveX = 0;
-            mouseMoveY = 0;
-
-            if (player.position.x < 0) {
-                player.position.x = 300;
-            };
-
-            if (player.position.y < 0) {
-                player.position.y = 300;
-            };
-
-            if (player.position.x > 600) {
-                player.position.x = 300;
-            };
-
-            if (player.position.y > 600) {
-                player.position.y = 300;
-            };
+            player.position.x = player.position.x + mouseMoveX;
+            player.position.y = player.position.y + mouseMoveY;
+            
+            if (mouseMoveX = 0) {
+              player.velocity.x = 0;
+            }
+            if (mouseMoveY = 0) {
+              player.velocity.y = 0;
+            }
         }
 
         document.addEventListener('mousemove', function(event) {
-            mouseMoveX = event.movementX;
-            mouseMoveY = event.movementY;
+            mouseMoveX = event.movementX / 3;
+            mouseMoveY = event.movementY / 3;
         });
 
     </script>
