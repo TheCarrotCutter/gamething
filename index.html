@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-a game made by Mason
-WASD to move
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -62,8 +60,11 @@ WASD to move
             
             gameCanvas.requestPointerLock();
 
-            player.position.x = player.position.x + event.movementX;
-            player.position.y = player.position.y + event.movementY;
+            player.position.x = player.position.x + mouseMoveX;
+            player.position.y = player.position.y + mouseMoveY;
+
+            mouseMoveX = 0;
+            mouseMoveY = 0;
         }
 
         document.addEventListener('mousemove', function(event) {
