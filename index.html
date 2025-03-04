@@ -45,7 +45,9 @@
 
             gameCanvas = game.canvas
             
-            player = this.matter.add.circle(300, 300, 15);
+            player = this.matter.add.circle(300, 300, 15, {
+              frictionAir: 1
+            });
 
             playerGraphics = this.add.graphics();
             playerGraphics.fillStyle(20, 0xffffff, 1);
@@ -74,8 +76,8 @@
         }
 
         document.addEventListener('mousemove', function(event) {
-            mouseMoveX = event.movementX / 3;
-            mouseMoveY = event.movementY / 3;
+            mouseMoveX = event.movementX;
+            mouseMoveY = event.movementY;
         });
 
     </script>
