@@ -58,12 +58,12 @@ WASD to move
         function update(time, delta) {
             playerGraphics.clear();
             playerGraphics.fillCircleShape(playerCircle);
-            playerCircle.setPosition(player.position.x, player.position.x);
+            playerCircle.setPosition(player.position.x, player.position.y);
             
             gameCanvas.requestPointerLock();
 
-            player.position.x = player.position.x + mouseMoveX;
-            player.position.y = player.position.y + mouseMoveY;
+            player.position.x = player.position.x + event.movementX;
+            player.position.y = player.position.y + event.movementY;
         }
 
         document.addEventListener('mousemove', function(event) {
