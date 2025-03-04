@@ -62,8 +62,8 @@ WASD to move
             
             gameCanvas.requestPointerLock();
 
-     //       player.x = 1;
-   //         player.y = 1;
+            player.position.x = player.position.x + mouseMoveX;
+            player.position.y = player.position.y + mouseMoveY;
         }
 
         document.addEventListener('mousemove', function(event) {
