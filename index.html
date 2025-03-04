@@ -20,7 +20,7 @@ WASD to move
                 default: 'matter',
                 matter: {
                     gravity: { y: 0 },
-                    debug: true
+                    debug: false
                 }
             },
             scene: {
@@ -62,6 +62,8 @@ WASD to move
             
             gameCanvas.requestPointerLock();
             console.log(mouseMoveX, mouseMoveY);
+            player.x = player.x + mouseMoveX;
+            player.y = player.y + mouseMoveY;
         }
 
         document.addEventListener('mousemove', function(event) {
