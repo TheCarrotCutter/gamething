@@ -39,6 +39,7 @@
         const game = new Phaser.Game(config);
         
         function preload() {
+            this.load.image('circleTest', 'assets/circle.png');
         }
 
         function create() {
@@ -52,7 +53,7 @@
             playerGraphics = this.add.graphics();
             playerGraphics.fillStyle(20, 0xffffff, 1);
             
-            playerTrail = this.add.particles(300, 300, '', {
+            playerTrail = this.add.particles(300, 300, 'circleTest', {
               x: 300,
               y: 300,
               speed: 100,
