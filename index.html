@@ -69,6 +69,13 @@
 
             player.position.x = player.position.x + mouseMoveX;
             player.position.y = player.position.y + mouseMoveY;
+
+            if (mouseMoveX = 0) {
+              player.velocity.x = 0;
+            }
+            if (mouseMoveY = 0) {
+              player.velocity.y = 0;
+            }
         }
 
         document.addEventListener('mousemove', function(event) {
