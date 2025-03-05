@@ -52,7 +52,13 @@
             playerGraphics = this.add.graphics();
             playerGraphics.fillStyle(20, 0xffffff, 1);
             
-            
+            playerTrail = this.add.particles(300, 300, '', {
+              x: 300,
+              y: 300,
+              speed: 100,
+              lifespan: 100,
+              quantity: 1,
+            });
         }
 
         function update(time, delta) {
