@@ -53,13 +53,13 @@
             playerGraphics = this.add.graphics();
             playerGraphics.fillStyle(20, 0xffffff, 1);
             
-            playerTrail = this.add.particles(300, 300, 'circleTest', {
-              speed: 100,
-              lifespan: 1000,
-              quantity: 1,
-              gravityY: 5,
-              onEmit: console.log('emittwed')
-            });
+            
+            function spawn(x, y) {
+                return this.add.circle(x, y);
+            }
+            
+            
+            let silly = spawn(200, 200)
         }
 
         function update(time, delta) {
