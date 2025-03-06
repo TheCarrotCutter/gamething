@@ -56,15 +56,15 @@
             playerGraphics.fillStyle(20, 0xffffff, 1);
             
             
-            function spawn(type, x, y) {
+            function spawn(title, type, x, y) {
                 if (type = 'basic') {
                     return thisBefore.matter.add.circle(x, y, 15);
+                    title.tag = type
                 }
             }
             
             
-            let test = spawn(200, 200);
-            test.tag = 'basic'
+            let test = spawn(test, basic, 200, 200);
         }
 
         function update(time, delta) {
