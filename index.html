@@ -44,6 +44,8 @@
 
         function create() {
 
+            let thisBefore = this;
+
             gameCanvas = game.canvas
             
             player = this.matter.add.circle(300, 300, 15, {
@@ -55,7 +57,7 @@
             
             
             function spawn(x, y) {
-                return this.matter.add.circle(x, y, 15);
+                return thisBefore.matter.add.circle(x, y, 15);
             }
             
             
