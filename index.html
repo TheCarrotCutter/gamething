@@ -87,10 +87,20 @@
             
             basicEnemies.forEach((object) => {
               
-              if ((object.position.x - player.position.x) > speed_basic)
+              if ((object.position.x - player.position.x) > speed_basic) {
+                differenceX = speed_basic;
+              } else {
+                differenceX = (object.position.x - player.position.x);
+              };
               
-              object.position.x = (object.position.x + (object.position.x - player.position.x))
-              object.position.y = (object.position.y + (object.position.y - player.position.y))
+              if ((object.position.y - player.position.y) > speed_basic) {
+                differenceY = speed_basic;
+              } else {
+                differenceY = (object.position.x - player.position.y);
+              };
+              
+              object.position.x = (object.position.x + differenceX)
+              object.position.y = (object.position.y + differenceY)
             })
         }
 
