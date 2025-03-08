@@ -34,6 +34,9 @@
         let gameCanvas
         let mouseMoveX = 0;
         let mouseMoveY = 0;
+        let basicEnemies
+        
+        const speed_basic = 5;
 
         // Game instance
         const game = new Phaser.Game(config);
@@ -56,15 +59,14 @@
             playerGraphics.fillStyle(20, 0xffffff, 1);
             
             
-            function spawn(title, type, x, y) {
-                if (type = 'basic') {
-                    return thisBefore.matter.add.circle(x, y, 15);
-                }
-            }
+            basicEnemies = [
+              {x: 200, y: 200},
+              {x: 400, y: 400}
+            ];
             
-            
-            let test = spawn('basic', 200, 200);
-            test.tag = 'basic';
+            basicEnemies.forEach((object) => {
+              thisBefore.matter.add.circle(object.x, object.y, 15);
+            })
         }
 
         function update(time, delta) {
@@ -82,6 +84,14 @@
             if (mouseMoveY = 0) {
               player.velocity.y = 0;
             }
+            
+            basicEnemies.forEach((object) => {
+              
+              if ((object.position.x - player.position.x) > speed_basic)
+              
+              object.position.x = (object.position.x + (object.position.x - player.position.x))
+              object.position.y = (object.position.y + (object.position.y - player.position.y))
+            })
         }
 
         document.addEventListener('mousemove', function(event) {
