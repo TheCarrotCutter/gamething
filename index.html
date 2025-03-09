@@ -65,7 +65,7 @@
             ];
             
             basicEnemies.forEach((object) => {
-              thisBefore.matter.add.circle(object.x, object.y, 15);
+              object.matterObject = thisBefore.matter.add.circle(object.x, object.y, 15);
             })
         }
 
@@ -86,8 +86,8 @@
             }
 
             basicEnemies.forEach((object) => {
-              differenceX = object.x - player.position.x;
-              differenceY = object.y - player.position.y;
+              differenceX = (object.x - player.position.x) * delta;
+              differenceY = (object.y - player.position.y) * delta;
           
               if (differenceX > speed_basic) {
                 differenceX = speed_basic
@@ -96,7 +96,9 @@
                 differenceY = speed_basic
               };
               
-              
+              object.matterObject.position.x = (object.matterObject.position.x + differenceX);
+              object.matterObject.position.y = (object.matterObject.position.y + differenceY);
+                
             });
 
         }
