@@ -37,8 +37,7 @@
         let basicEnemies
         
         const speed_basic = 5;
-
-        // Game instance
+        
         const game = new Phaser.Game(config);
         
         function preload() {
@@ -59,7 +58,7 @@
             });
 
             playerGraphics = this.add.graphics();
-            playerGraphics.fillStyle(20, 0xffffff, 1);
+            playerGraphics.fillStyle(0xffffff, 1);
             
             
             basicEnemies = [
@@ -113,12 +112,5 @@
         });
 
     </script>
-    <style>
-        canvas {
-            border: 1px solid #fff;
-            filter: blur(2px) brightness(1.5);
-            box-shadow: 0 0 0px rgba(255, 255, 255, 0.8);
-        }
-    </style>
 </body>
 </html>
