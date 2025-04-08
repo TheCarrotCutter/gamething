@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jelly gon</title>
@@ -90,7 +88,22 @@
             basicEnemies.forEach((object) => {
               playerGraphics.fillCircle(object.matterObject.position.x, object.matterObject.position.y, 15);
               
-              object.matterObject.position.x = object.matterObject.position.x + 0.1`
+              differenceX = (object.x - player.position.x) * delta;
+              differenceY = (object.y - player.position.y) * delta;
+          
+              if (differenceX > speed_basic) {
+                differenceX = speed_basic;
+              };
+              if (differenceY > speed_basic) {
+                differenceY = speed_basic;
+              };
+              
+              //object.matterObject.position.x = (object.matterObject.position.x + differenceX);
+              //object.matterObject.position.y = (object.matterObject.position.y + differenceY);
+                
+            });
+            
+
             });
             
 
@@ -102,5 +115,6 @@
         });
 
     </script>
-</body>
-</html>
+
+
+</body></html>
