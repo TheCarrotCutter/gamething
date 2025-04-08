@@ -58,8 +58,6 @@
             });
 
             playerGraphics = this.add.graphics();
-            playerGraphics.fillStyle(0xffffff, 1);
-            
             
             basicEnemies = [
               {x: 200, y: 200},
@@ -73,6 +71,7 @@
 
         function update(time, delta) {
             playerGraphics.clear();
+            playerGraphics.fillStyle(0xffffff, 1);
             playerGraphics.fillCircle(player.position.x, player.position.y, 15);
             
             gameCanvas.requestPointerLock();
