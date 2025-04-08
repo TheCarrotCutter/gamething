@@ -58,6 +58,7 @@
             });
 
             playerGraphics = this.add.graphics();
+            //playerGraphics is actually used to draw the player AND every enemy
             
             basicEnemies = [
               {x: 200, y: 200},
@@ -87,19 +88,9 @@
             }
 
             basicEnemies.forEach((object) => {
-              differenceX = (object.x - player.position.x) * delta;
-              differenceY = (object.y - player.position.y) * delta;
-          
-              if (differenceX > speed_basic) {
-                differenceX = speed_basic;
-              };
-              if (differenceY > speed_basic) {
-                differenceY = speed_basic;
-              };
+              playerGraphics.fillCircle(object.matterObject.position.x, object.matterObject.position.y, 15);
               
-              //object.matterObject.position.x = (object.matterObject.position.x + differenceX);
-              //object.matterObject.position.y = (object.matterObject.position.y + differenceY);
-                
+              object.matterObject.position.x = object.matterObject.position.x + 0.1`
             });
             
 
