@@ -15,8 +15,8 @@
             height: 600,
             pixelArt: true,
             physics: {
-                default: 'matter',
-                matter: {
+                default: 'arcade',
+                arcade: {
                     gravity: { y: 0 },
                     debug: true
                 }
@@ -53,9 +53,7 @@
             gameCanvas.shadowBlur = 10;
             gameCanvas.shadowColor = "black";
             
-            player = this.matter.add.circle(300, 300, 15, {
-              frictionAir: 1
-            });
+            player = this.physics.add.sprite(300, 300);
 
             playerGraphics = this.add.graphics();
             //playerGraphics is actually used to draw the player AND every enemy
@@ -66,19 +64,19 @@
             ];
             
             basicEnemies.forEach((object) => {
-              object.matterObject = thisBefore.matter.add.circle(object.x, object.y, 15);
+              object.sprite = thisBefore.physics.add.sprite(object.x, object.y);
             })
         }
 
         function update(time, delta) {
             playerGraphics.clear();
             playerGraphics.fillStyle(0xffffff, 1);
-            playerGraphics.fillCircle(player.position.x, player.position.y, 15);
+            playerGraphics.fillCircle(player.x, player.y, 15);
             
             gameCanvas.requestPointerLock();
 
-            player.position.x = player.position.x + mouseMoveX;
-            player.position.y = player.position.y + mouseMoveY;
+            player.x = player.x + mouseMoveX;
+            player.y = player.y + mouseMoveY;
 
             if (mouseMoveX = 0) {
               player.velocity.x = 0;
@@ -88,9 +86,9 @@
             }
 
             basicEnemies.forEach((object) => {
-              playerGraphics.fillCircle(object.matterObject.position.x, object.matterObject.position.y, 15);
+              playerGraphics.fillCircle(object.sprite.x, object.sprite.y, 15);
               
-              object.matterObject.position.x = object.matterObject.position.x + 0.1`
+              this.physics.moveToObject(object.sprite, player, 100);
             });
             
 
