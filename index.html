@@ -1,4 +1,6 @@
-<html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jelly gon</title>
@@ -13,8 +15,8 @@
             height: 600,
             pixelArt: true,
             physics: {
-                default: 'matter',
-                matter: {
+                default: 'arcade',
+                arcade: {
                     gravity: { y: 0 },
                     debug: true
                 }
@@ -27,12 +29,13 @@
         };
 
         let player
-        let playerGraphics
-        let playerCircle
+        let graphics
+        let imageGenerator
         let gameCanvas
         let mouseMoveX = 0;
         let mouseMoveY = 0;
         let basicEnemies
+        let particle
         
         const speed_basic = 5;
         
@@ -51,12 +54,10 @@
             gameCanvas.shadowBlur = 10;
             gameCanvas.shadowColor = "black";
             
-            player = this.matter.add.circle(300, 300, 15, {
-              frictionAir: 1
-            });
+            player = this.physics.add.sprite(300, 300);
 
-            playerGraphics = this.add.graphics();
-            //playerGraphics is actually used to draw the player AND every enemy
+            graphics = this.add.graphics();
+            //graphics is actually used to draw the player AND every enemy
             
             basicEnemies = [
               {x: 200, y: 200},
@@ -64,19 +65,27 @@
             ];
             
             basicEnemies.forEach((object) => {
-              object.matterObject = thisBefore.matter.add.circle(object.x, object.y, 15);
+              object.sprite = thisBefore.physics.add.sprite(object.x, object.y);
             })
+            
+            imageGenerator = this.add.graphics();
+            
+            //particle = this.add.particle
+            //generating particle textures
+            imageGenerator.fillCircle(5, 5, 10);
+            imageGenerator.generateTexture('imageCircle' 10, 10);
+            imageGenerator.clear();
         }
 
         function update(time, delta) {
-            playerGraphics.clear();
-            playerGraphics.fillStyle(0xffffff, 1);
-            playerGraphics.fillCircle(player.position.x, player.position.y, 15);
+            graphics.clear();
+            graphics.fillStyle(0xffffff, 1);
+            graphics.fillCircle(player.x, player.y, 15);
             
             gameCanvas.requestPointerLock();
 
-            player.position.x = player.position.x + mouseMoveX;
-            player.position.y = player.position.y + mouseMoveY;
+            player.x = player.x + mouseMoveX;
+            player.y = player.y + mouseMoveY;
 
             if (mouseMoveX = 0) {
               player.velocity.x = 0;
@@ -86,24 +95,9 @@
             }
 
             basicEnemies.forEach((object) => {
-              playerGraphics.fillCircle(object.matterObject.position.x, object.matterObject.position.y, 15);
+              graphics.fillCircle(object.sprite.x, object.sprite.y, 15);
               
-              differenceX = (object.x - player.position.x) * delta;
-              differenceY = (object.y - player.position.y) * delta;
-          
-              if (differenceX > speed_basic) {
-                differenceX = speed_basic;
-              };
-              if (differenceY > speed_basic) {
-                differenceY = speed_basic;
-              };
-              
-              //object.matterObject.position.x = (object.matterObject.position.x + differenceX);
-              //object.matterObject.position.y = (object.matterObject.position.y + differenceY);
-                
-            });
-            
-
+              this.physics.moveToObject(object.sprite, player, 100);
             });
             
 
@@ -115,6 +109,5 @@
         });
 
     </script>
-
-
-</body></html>
+</body>
+</html>
