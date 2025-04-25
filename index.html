@@ -8,7 +8,6 @@
 </head>
 <body>
     <script>
-// Phaser game configuration
         const config = {
             type: Phaser.AUTO,
             width: 600,
@@ -36,13 +35,16 @@
         let mouseMoveY = 0;
         let basicEnemies
         let particle
+        let circleParticle
+        let playerEmitter
+        let enemyEmitter
         
         const speed_basic = 5;
         
         const game = new Phaser.Game(config);
         
         function preload() {
-            this.load.image('circleTest', 'assets/star.png');
+          
         }
 
         function create() {
@@ -50,9 +52,6 @@
             let thisBefore = this;
 
             gameCanvas = game.canvas
-
-            gameCanvas.shadowBlur = 10;
-            gameCanvas.shadowColor = "black";
             
             player = this.physics.add.sprite(300, 300);
 
@@ -66,15 +65,44 @@
             
             basicEnemies.forEach((object) => {
               object.sprite = thisBefore.physics.add.sprite(object.x, object.y);
+              
+              object.trail = circleParticle.createEmitter({
+              x: 0,
+              y: 0,
+              speed: 0,
+              lifespan: 300,
+              quantity: 1,
+              alpha: {start: 0.75, end: 0},
+              scale: {start: 1.5, end: 0.5}
+            });
+            
             })
             
             imageGenerator = this.add.graphics();
             
-            //particle = this.add.particle
             //generating particle textures
-            imageGenerator.fillCircle(5, 5, 10);
-            imageGenerator.generateTexture('imageCircle' 10, 10);
+            imageGenerator.fillStyle(0xffffff, 1)
+            imageGenerator.fillCircle(10, 10, 10);
+            imageGenerator.generateTexture('imageCircle', 20, 20);
             imageGenerator.clear();
+
+            circleParticle = this.add.particles('imageCircle');
+
+            playerEmitter = circleParticle.createEmitter({
+              x: 0,
+              y: 0,
+              speed: 0,
+              lifespan: 300,
+              quantity: 1,
+              alpha: {start: 0.75, end: 0},
+              scale: {start: 1.5, end: 0.5}
+            });
+            
+            playerEmitter.startFollow(player);
+            
+            playerEmitter.startFollow(player);
+
+
         }
 
         function update(time, delta) {
@@ -98,6 +126,8 @@
               graphics.fillCircle(object.sprite.x, object.sprite.y, 15);
               
               this.physics.moveToObject(object.sprite, player, 100);
+              
+              enemyEmitter.emitParticle(1, object.sprite.x, object.sprite.y);
             });
             
 
