@@ -8,17 +8,15 @@
 </head>
 <body>
     <script>
-// Phaser game configuration
         const config = {
             type: Phaser.AUTO,
             width: 600,
             height: 600,
-            pixelArt: true,
             physics: {
                 default: 'arcade',
                 arcade: {
                     gravity: { y: 0 },
-                    debug: true
+                    debug: false
                 }
             },
             scene: {
@@ -29,75 +27,114 @@
         };
 
         let player
-        let playerGraphics
-        let playerCircle
+        let graphics
+        let imageGenerator
         let gameCanvas
         let mouseMoveX = 0;
         let mouseMoveY = 0;
         let basicEnemies
+        let particle
+        let playerEmitter
+        let enemyEmitter
         
         const speed_basic = 5;
         
         const game = new Phaser.Game(config);
         
         function preload() {
-            this.load.image('circleTest', 'assets/star.png');
+          
         }
 
         function create() {
 
             let thisBefore = this;
+            
+            imageGenerator = this.add.graphics();
+            
+            //generating particle textures
+            imageGenerator.fillStyle(0xffffff, 1)
+            imageGenerator.fillCircle(20, 20, 20);
+            imageGenerator.generateTexture('imageCircle', 40, 40);
+            imageGenerator.clear();
+            
+            imageGenerator.fillStyle(0xff0000, 1)
+            imageGenerator.fillCircle(20, 20, 20);
+            imageGenerator.fillStyle(0xffffff, 1)
+            imageGenerator.fillCircle(20, 20, 18);
+            imageGenerator.generateTexture('circleRedOutline', 40, 40);
+            imageGenerator.clear();
 
             gameCanvas = game.canvas
-
-            gameCanvas.shadowBlur = 10;
-            gameCanvas.shadowColor = "black";
             
-            player = this.physics.add.sprite(300, 300);
-
-            playerGraphics = this.add.graphics();
-            //playerGraphics is actually used to draw the player AND every enemy
+            player = this.physics.add.sprite(300, 300, 'imageCircle');
+            player.setDisplaySize(30, 30);
             
             basicEnemies = [
               {x: 200, y: 200},
               {x: 400, y: 400}
             ];
             
+            circleParticle = this.add.particles('imageCircle');
+            circleParticle.setDepth(0);
+
+            playerEmitter = circleParticle.createEmitter({
+              x: 0,
+              y: 0,
+              speed: 0,
+              lifespan: 300,
+              quantity: 1,
+              alpha: {start: 0.75, end: 0},
+              scale: {start: 0.75, end: 0.25}
+            });
+            
+            playerEmitter.startFollow(player);
+            
+            playerEmitter.startFollow(player);
+
             basicEnemies.forEach((object) => {
-              object.sprite = thisBefore.physics.add.sprite(object.x, object.y);
-            })
+              object.sprite = thisBefore.physics.add.sprite(object.x, object.y, 'circleRedOutline');
+              object.sprite.setDisplaySize(28, 28);
+              object.trail = circleParticle.createEmitter({
+                x: 0,
+                y: 0,
+                speed: 0,
+                lifespan: 400,
+                quantity: 1,
+                alpha: {start: 1, end: 1},
+                scale: {start: 0.75, end: 0.05},
+                tint: 0xFF0000
+              });
+              object.trail.startFollow(object.sprite);
+            });
+            
+            this.input.on('pointerdown', () => {
+              gameCanvas.requestPointerLock();
+            });
         }
 
         function update(time, delta) {
-            playerGraphics.clear();
-            playerGraphics.fillStyle(0xffffff, 1);
-            playerGraphics.fillCircle(player.x, player.y, 15);
+          player.x = player.x + mouseMoveX;
+          player.y = player.y + mouseMoveY;
+
+          if (mouseMoveX = 0) {
+            player.velocity.x = 0;
+          }
+          if (mouseMoveY = 0) {
+            player.velocity.y = 0;
+          }
             
-            gameCanvas.requestPointerLock();
-
-            player.x = player.x + mouseMoveX;
-            player.y = player.y + mouseMoveY;
-
-            if (mouseMoveX = 0) {
-              player.velocity.x = 0;
-            }
-            if (mouseMoveY = 0) {
-              player.velocity.y = 0;
-            }
-
-            basicEnemies.forEach((object) => {
-              playerGraphics.fillCircle(object.sprite.x, object.sprite.y, 15);
-              
-              this.physics.moveToObject(object.sprite, player, 100);
-            });
+          basicEnemies.forEach((object) => {
             
-
-        }
+            
+            this.physics.moveToObject(object.sprite, player, 100);
+          });
+        };
 
         document.addEventListener('mousemove', function(event) {
             mouseMoveX = event.movementX;
             mouseMoveY = event.movementY;
         });
+
 
     </script>
 </body>
