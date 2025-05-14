@@ -36,6 +36,7 @@
         let particle
         let playerEmitter
         let enemyEmitter
+        let mainPhysicsGroup
         
         const speed_basic = 5;
         
@@ -68,14 +69,26 @@
             
             player = this.physics.add.sprite(300, 300, 'imageCircle');
             player.setDisplaySize(30, 30);
+            player.body.setCircle(20, 0, 0)
+            
+            mainPhysicsGroup = this.physics.add.group();
+            mainPhysicsGroup.add(player);
             
             basicEnemies = [
               {x: 200, y: 200},
-              {x: 400, y: 400}
+              {x: 400, y: 400},
+              {x: 400, y: 600},
+              {x: 400, y: 500},
+              {x: 400, y: 700},
+              {x: 400, y: 800},
+              {x: 400, y: 900},
+              {x: 400, y: 1000},
+              {x: 400, y: 1100},
+              {x: 500, y: 400},
+              {x: 600, y: 400}
             ];
             
             circleParticle = this.add.particles('imageCircle');
-            circleParticle.setDepth(0);
 
             playerEmitter = circleParticle.createEmitter({
               x: 0,
@@ -84,16 +97,15 @@
               lifespan: 300,
               quantity: 1,
               alpha: {start: 0.75, end: 0},
-              scale: {start: 0.75, end: 0.25}
+              scale: {start: 0.75, end: 0}
             });
-            
-            playerEmitter.startFollow(player);
             
             playerEmitter.startFollow(player);
 
             basicEnemies.forEach((object) => {
               object.sprite = thisBefore.physics.add.sprite(object.x, object.y, 'circleRedOutline');
               object.sprite.setDisplaySize(28, 28);
+              object.sprite.body.setCircle(20, 0, 0);
               object.trail = circleParticle.createEmitter({
                 x: 0,
                 y: 0,
@@ -105,17 +117,21 @@
                 tint: 0xFF0000
               });
               object.trail.startFollow(object.sprite);
+              object.sprite.setBounce(1);
+              mainPhysicsGroup.add(object.sprite);
             });
             
             this.input.on('pointerdown', () => {
               gameCanvas.requestPointerLock();
             });
+            
+            this.physics.add.collider(mainPhysicsGroup, mainPhysicsGroup);
         }
 
         function update(time, delta) {
-          player.x = player.x + mouseMoveX;
-          player.y = player.y + mouseMoveY;
-
+          player.body.velocity.x = mouseMoveX * 40;
+          player.body.velocity.y = mouseMoveY * 40;
+          
           if (mouseMoveX = 0) {
             player.velocity.x = 0;
           }
