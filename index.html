@@ -16,7 +16,7 @@
                 default: 'arcade',
                 arcade: {
                     gravity: { y: 0 },
-                    debug: false
+                    debug: true
                 }
             },
             scene: {
@@ -37,8 +37,6 @@
         let playerEmitter
         let enemyEmitter
         let mainPhysicsGroup
-        
-        const speed_basic = 5;
         
         const game = new Phaser.Game(config);
         
@@ -69,7 +67,7 @@
             
             player = this.physics.add.sprite(300, 300, 'imageCircle');
             player.setDisplaySize(30, 30);
-            player.body.setCircle(20, 0, 0)
+            player.body.setCircle(20, 0, 0);
             
             mainPhysicsGroup = this.physics.add.group();
             mainPhysicsGroup.add(player);
@@ -129,16 +127,14 @@
         }
 
         function update(time, delta) {
-          player.body.velocity.x = mouseMoveX * 40;
-          player.body.velocity.y = mouseMoveY * 40;
           
-          if (mouseMoveX = 0) {
-            player.velocity.x = 0;
-          }
-          if (mouseMoveY = 0) {
-            player.velocity.y = 0;
-          }
-            
+          //player physics
+          player.body.velocity.x += mouseMoveX;
+          player.body.velocity.y += mouseMoveY;
+          
+          mouseMoveX = 0;
+          mouseMoveY = 0;
+          
           basicEnemies.forEach((object) => {
             
             
