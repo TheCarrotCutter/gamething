@@ -1,3 +1,4 @@
+let toSpawnEnemies
 function checkEnemies() {
   toSpawnEnemies.forEach((object) => {
               object.sprite = thisBefore.physics.add.sprite(object.x, object.y, 'circleRedOutline');
