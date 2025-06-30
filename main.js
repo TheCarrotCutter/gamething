@@ -6,6 +6,8 @@ import { player, createPlayer, updatePlayer } from './player.js';
 
 import { generateTextures } from './images.js';
 
+import { loadStyleGround } from './definitions.js';
+
 // export thisBefore
 
 export let thisBefore;
@@ -18,6 +20,7 @@ const config = {
   type: Phaser.AUTO,
   width: 600,
   height: 600,
+  resolution: 1,   
   physics: {
     default: 'arcade',
     arcade: {
@@ -56,7 +59,9 @@ function create() {
   // ------------- //
   
   let camera = this.cameras.main
-  var effect = camera.postFX.addBloom(0xFFFFFF, 0, 0, 1, 1, 4);
+  var effect = camera.postFX.addGlow(0xFFFFFF, 2, 1, 0, 1, 4);
+//var effect = camera.postFX.addGlow(color, outerStrength, innerStrength, knockout, quality, distance);
+
 
   generateTextures(this);
   
@@ -77,10 +82,14 @@ function create() {
 function update() {
   updatePlayer();
 }
+
+
 // ---------- //
 // LOAD LEVEL //
 // ---------- //
 
 function loadLevel(scene, level) {
   createPlayer(scene, 300, 300);
+  loadStyleGround(scene, 'smallStars');
+  //loadStyleGround(scene, 'stars');
 }
