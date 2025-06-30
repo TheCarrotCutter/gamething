@@ -8,26 +8,37 @@
 
 export let player;
 let circleParticle
-let playerEmitter
 
 export function createPlayer(scene, x, y) {
   console.log("Player Creating...")
   
-  player = scene.physics.add.sprite(0, 0, 'imageCircle');
-  player.setDisplaySize(30, 30);
+  player = scene.physics.add.sprite(x, y, 'imageCircle');
+  player.setDisplaySize(30, 30); // 30 30
   player.body.setCircle(20, 0, 0);
+  player.setTint(0x81daf0);
   
-  playerEmitter = scene.add.particles(0, 0, 'imageCircle', {
+  const playerEmitter = scene.add.particles(0, 0, 'imageCircle', {
     x: 0,
     y: 0,
     speed: 0,
     lifespan: 300,
     quantity: 1,
     alpha: { start: 0.75, end: 0 },
-    scale: { start: 0.75, end: 0.1 }
+    scale: { start: 0.75, end: 0 },
+  });
+  
+  const playerEmitter2 = scene.add.particles(0, 0, 'imageCircle', {
+    x: { random: [ -100, 100 ] },
+    y: { random: [ -100, 100 ] },
+    speed: 15,
+    lifespan: 1000,
+    quantity: 1,
+    alpha: { start: 0.3, end: 0 },
+    scale: 0.05
   });
 
   playerEmitter.startFollow(player);
+  playerEmitter2.startFollow(player);
   
   // ---------------- //
   // PLAYER COLLISION //
