@@ -13,7 +13,7 @@ export function createPlayer(scene, x, y) {
   console.log("Player Creating...")
   
   player = scene.physics.add.sprite(x, y, 'imageCircle');
-  player.setDisplaySize(15, 15);
+  player.setDisplaySize(30, 30);
   player.body.setCircle(20, 0, 0);
   player.setTint(0x82d5ff);
   
