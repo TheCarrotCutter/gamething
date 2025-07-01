@@ -35,7 +35,7 @@ export function createPlayer(scene, x, y) {
     lifespan: 1000,
     quantity: 1,
     alpha: { start: 0.3, end: 0 },
-    scale: 50,
+    scale: 0.05,
     tint: 0x82d5ff
   });
 
