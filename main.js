@@ -45,6 +45,8 @@ console.log('Phaser version:', Phaser.VERSION);
 
 let gameCanvas = game.canvas
 
+let inGame = false;
+
 // --------------- //
 // SCENE FUNCTIONS //
 // --------------- //
@@ -54,9 +56,9 @@ function preload() {
 }
 
 function create() {
-  // ------------- //
+  // --------------- //
   // CREATE() SETUPS //
-  // ------------- //
+  // --------------- //
   
   let camera = this.cameras.main
   var effect = camera.postFX.addGlow(0xFFFFFF, 2, 2, 0, 1, 4);
@@ -92,4 +94,6 @@ function loadLevel(scene, level) {
   createPlayer(scene, 300, 300);
   loadStyleGround(scene, 'smallStars');
   //loadStyleGround(scene, 'stars');
+  
+  inGame = true;
 }
