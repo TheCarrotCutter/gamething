@@ -11,8 +11,8 @@ export function generateTextures(scene) {
 
 
   imageGenerator.fillStyle(0xffffff, 1);
-  imageGenerator.fillCircle(20, 20, 20);
-  imageGenerator.generateTexture('imageCircle', 40, 40);
+  imageGenerator.fillCircle(20, 20, 40);
+  imageGenerator.generateTexture('imageCircle', 80, 80);
   imageGenerator.clear();
             
   imageGenerator.fillStyle(0xff0000, 1)
