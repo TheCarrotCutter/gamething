@@ -73,8 +73,8 @@ export function updatePlayer() {
   // check if player exists
   if (player) {
   
-    player.body.velocity.x += mouseMoveX * 1.5;
-    player.body.velocity.y += mouseMoveY * 1.5;
+    player.body.velocity.x += mouseMoveX * 2;
+    player.body.velocity.y += mouseMoveY * 2;
 
     player.body.velocity.x *= 0.95;
     player.body.velocity.y *= 0.95;
