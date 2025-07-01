@@ -91,9 +91,10 @@ function update() {
 // ---------- //
 
 function loadLevel(scene, level) {
-  createPlayer(scene, 300, 300);
   loadStyleGround(scene, 'smallStars');
   //loadStyleGround(scene, 'stars');
+  createPlayer(scene, 300, 300);
+  
   
   inGame = true;
 }
