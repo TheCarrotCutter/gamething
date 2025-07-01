@@ -11,7 +11,7 @@ export function loadStyleGround(scene, styleGround) {
         speed: 0,
         lifespan: 2000,
         quantity: 1,
-        scale: { start: 0.1, end: 0.05 },
+        scale: { start: 0.05, end: 0.025 },
         alpha: { start: 0.5, end: 0 },
       });
     }
@@ -23,7 +23,7 @@ export function loadStyleGround(scene, styleGround) {
         lifespan: 20000000000,
         quantity: 0,
         frequency: 100,
-        scale: 0.05,
+        scale: 0.025,
         alpha: 0.3
       });
       p.explode(1000)
