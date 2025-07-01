@@ -59,7 +59,7 @@ function create() {
   // ------------- //
   
   let camera = this.cameras.main
-  var effect = camera.postFX.addGlow(0xFFFFFF, 2, 1, 0, 1, 4);
+  var effect = camera.postFX.addGlow(0xFFFFFF, 2, 2, 0, 1, 4);
 //var effect = camera.postFX.addGlow(color, outerStrength, innerStrength, knockout, quality, distance);
 
 
