@@ -15,7 +15,7 @@ export function createPlayer(scene, x, y) {
   player = scene.physics.add.sprite(x, y, 'imageCircle');
   player.setDisplaySize(30, 30); // 30 30
   player.body.setCircle(20, 0, 0);
-  player.setTint(0x81daf0);
+  player.setTint(0x82d5ff);
   
   const playerEmitter = scene.add.particles(0, 0, 'imageCircle', {
     x: 0,
@@ -25,6 +25,7 @@ export function createPlayer(scene, x, y) {
     quantity: 1,
     alpha: { start: 0.75, end: 0 },
     scale: { start: 0.75, end: 0 },
+    tint: 0x82d5ff
   });
   
   const playerEmitter2 = scene.add.particles(0, 0, 'imageCircle', {
@@ -34,7 +35,8 @@ export function createPlayer(scene, x, y) {
     lifespan: 1000,
     quantity: 1,
     alpha: { start: 0.3, end: 0 },
-    scale: 0.05
+    scale: 0.05,
+    tint: 0x82d5ff
   });
 
   playerEmitter.startFollow(player);
