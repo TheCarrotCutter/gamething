@@ -15,7 +15,7 @@ export function createPlayer(scene, x, y) {
   player = scene.physics.add.sprite(x, y, 'imageCircle');
   player.setDisplaySize(30, 30); // 30 30
   player.body.setCircle(20, 0, 0);
-  player.setTint(0x81daf0);
+  player.setTint(0x0a5a82);
   
   const playerEmitter = scene.add.particles(0, 0, 'imageCircle', {
     x: 0,
